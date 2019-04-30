@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/faq"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/faq"
+        tools:srcCompat="@drawable/faq" />
+
+    <TextView
+        android:id="@+id/title_faq"
+        android:layout_width="319dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/title_faq"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/planningteamLV_main"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/faq_q1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/q1_faq"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/faq_a1_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/a1_1_faq"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/faq_a1_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/a1_2_faq"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/faq_q2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/q2_faq"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/faq_a2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/a2_faq"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/faq_q3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/q3_faq"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/faq_a3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/a3_faq"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/faq_q4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/q4_faq"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/faq_a4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/a4_faq"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/faq_q5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/q5_faq"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/faq_a5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/a5_faq"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/faq_q6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/q6_faq"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/faq_a6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/a6_faq"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/faq_q7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/q7_faq"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/faq_a7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/a7_faq"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/faq_q8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/q8_faq"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/faq_a8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/a8_faq"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/faq_q9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/q9_faq"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/faq_a9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/a9_faq"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

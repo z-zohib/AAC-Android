@@ -1,0 +1,111 @@
+<resources>
+    <string name="app_name">AACv3</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="title_main">About</string>
+    <string name="text1_about">
+        The Afghan-American diaspora has historically lacked a safe space for candid discussions about the issues most pertinent to us. Traditionally, our community has come together almost exclusively in social settings, including weddings, concerts, picnics, and sports tournaments. However, non of these gatherings have been conducive to serious discussions about the state of our community. Too often, taboo topics have been swept under the proverbal Afghan rug, never to be broached or approached.
+    </string>
+    <string name="text2_about">
+        Given the impoverished state of Afghanistan, it is understandable that so much of our diaspora\'s civic attention has focused on humanitarian relief for the Motherland. But in doing so, we have lost sight of our own community\'s struggles here in the United States.
+    </string>
+    <string name="title_aWayForward">A WAY FORWARD</string>
+    <string name="text3_about">
+        Given the impoverished state of Afghanistan, it is understandable that so much of our diaspora\'s civic attention has focused on humanitarian relief for the Motherland. But in doing so, we have lost sight of our own community\'s struggles here in the United States.
+    </string>
+    <string name="text4_about">
+        Given the impoverished state of Afghanistan, it is understandable that so much of our diaspora\'s civic attention has focused on humanitarian relief for the Motherland. But in doing so, we have lost sight of our own community\'s struggles here in the United States.
+    </string>
+
+
+    <string name="title_planning_team">Planning Team 2019</string>
+    <string name="text1_planning_team">
+        The Afghan-American Conference started as an idea implemented by a group of students and working professionals volunteering remotely from across the United States. Our team is comprised of individuals with deep passion for our community, a commitment to service, and diverse personal and professional experiences that seek to advance AAC’s vision of building a supportive, empowered, and engaged Afghan-American community.
+    </string>
+    <string name="title1_planning_team">Organizing Committee</string>
+    <string name="title2_planning_team">2019 Subcommittee</string>
+
+
+    <string name="title_faq">FAQ</string>
+    <string name="q1_faq">
+        WHAT IS THE AFGHAN-AMERICAN CONFERENCE?
+    </string>
+    <string name="a1_1_faq">
+        The Afghan-American Conference is an annual conference for members of the Afghan-American community to engage in meaningful dialogue, grow professionally, and build relationships.
+    </string>
+    <string name="a1_2_faq">
+        The conference is equal parts professional, cultural, spiritual, social, and personal. It is a holistic event consisting of keynote speeches, S.E.E.D Talks (Supportive Engaged Empowered Diaspora), professional panels, skill-building workshops, roundtable discussions, safe space caucuses, town halls, networking mixers and arts and entertainment.
+    </string>
+    <string name="q2_faq">
+        WHO HOSTS THE AFGHAN-AMERICAN CONFERENCE?
+    </string>
+    <string name="a2_faq">
+        The conference is an annual event hosted by the Afghan-American Community Organization and produced by a conference Organizing Committee. This committee and the many subcommittees that support it  consist of Afghan-American professionals and students hailing from across the U.S. Please refer to the Committee section of our website to learn more about the Organizing Committee.
+    </string>
+    <string name="q3_faq">
+        WHO IS THIS EVENT FOR?
+    </string>
+    <string name="a3_faq">
+        This conference is open to all individuals who identify as members of the Afghan diaspora. It is targeted to young Afghans who grew up in America, but Afghans of all ages and any diaspora worldwide are welcome to apply. All participants must be over the age of 18 or high school graduates.
+    </string>
+    <string name="q4_faq">
+        WHY DO YOU ENCOURAGE YOUNG AFGHANS SPECIFICALLY TO APPLY?
+    </string>
+    <string name="a4_faq">
+        Our goal is to provide a safe space for up and coming members of our community to come together. We acknowledge that more established members in the community are integral and their wisdom and experiences are invaluable. That is why anyone of any age can apply to attend. However, for now at least, AAC lacks the organizational capacity and resources to organize an event catered to all age ranges. We look forward to supporting and partnering with future initiatives that will help us one day engage ALL members of our community.
+    </string>
+    <string name="q5_faq">
+        I HAVE GREAT IDEAS. MAY I PRESENT AT THE CONFERENCE?
+    </string>
+    <string name="a5_faq">
+        Yes! Attendees have two options to present: Session Topics and and S.E.E.D Talks (Supportive Engaged Empowered Diaspora). \n\nS.E.E.D Talks (Supportive Engaged Empowered Diaspora) \n\nThroughout the weekend, conference participants can give short (5-10 minutes) talks on any topic. Participants interested in giving S.E.E.D Talks will be required to submit a script, audition tape, and if applicable, a PowerPoint presentation.We are always looking for dynamic, accomplished and passionate speakers.
+    </string>
+    <string name="q6_faq">
+        WHAT IS THE CONFERENCE DRESS CODE?
+    </string>
+    <string name="a6_faq">
+        The attire is business casual all weekend. Attendees may choose to wear traditional Afghan garb at the Saturday evening banquet.
+    </string>
+    <string name="q7_faq">
+        WHAT MATERIALS SHOULD I BRING?
+    </string>
+    <string name="a7_faq">
+        To get the most out of this experience, we recommend bringing notebooks and pens to take notes.
+    </string>
+    <string name="q8_faq">
+        I HAVE SPECIAL DIETARY NEEDS. CAN THOSE BE ACCOMMODATED AT THE CONFERENCE?
+    </string>
+    <string name="a8_faq">
+        We will make every effort to offer Halal/Zabiha and vegetarian options. Beyond that, please email us separately with your dietary needs if you are admitted to the conference, and we will try to accommodate as best we can.
+    </string>
+    <string name="q9_faq">
+        I HAVE ANOTHER QUESTION NOT LISTED HERE. CAN YOU HELP ME?
+    </string>
+    <string name="a9_faq">
+        Yes! Please send us an email at afghanamericanconference@gmail.com with your question.
+    </string>
+
+
+    <string name="title_donate">Donate</string>
+    <string name="text1_donate">
+        We invite you to contribute to our groundbreaking conference and our year-round work.
+    </string>
+    <string name="text2_donate">
+        The Afghan-American Conference is made possible with generous financial support from donors and sponsors. The three-day long conference is the marquee event in the Afghan-American community, with attendance at this year\'s conference in New York expected to reach nearly 500 people. Your donation will also go toward funding the other year-round work our organization does for the Afghan-American community.
+    </string>
+    <string name="title1_donate">
+        HOW YOU CAN HELP
+    </string>
+    <string name="text3_donate">
+        As a conference intended to bring together Afghan-Americans from all walks of life and various stages of professional development, it is our intention to ensure that cost does not become an obstacle to participation. In order to ensure AAC\'s success and the participation of those who have applied, we have set ambitious goals this year to help with fee waivers to attend the conference and subsidized ticket prices for those with financial need.
+    </string>
+    <string name="text4_donate">
+        Our team continues to work diligently to manage costs and pursue funding and in-kind support for the event.\nHere\'s what you can do to help: \n\n• Donate to this campaign. \n\n• Support the fee waiver fund: sponsor a ticket for someone else to attend who is otherwise unable. \n\n• Share the link and spread the word. \n\n• Apply to attend the Afghan-American Conference to learn, discuss, and take steps towards strengthening our diaspora. \n\n• Apply to speak or contact us to share your story, pictures, and experiences. \n\n• Use the hashtag #AfgAm18 on social media. \n\nYour support has been critical to our past success and we want you to be a part of the great things that lie ahead. With your help, we can continue and even expand our work for the community. \n\nWe\'re also pleased to share that we have commenced the process of becoming a 501&#169;(3) nonprofit organization so your donation will be tax-deductible.
+    </string>
+</resources>
