@@ -1,4 +1,4 @@
-package com.example.aacv3;
+package com.aac.events;
 
 import org.junit.Test;
 

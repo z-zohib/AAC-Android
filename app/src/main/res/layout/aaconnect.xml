@@ -11,15 +11,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:src="@drawable/donate"
+        android:src="@drawable/about"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/donate"
-        tools:srcCompat="@drawable/donate" />
+        tools:src="@drawable/about"
+        tools:srcCompat="@drawable/about" />
 
     <TextView
-        android:id="@+id/title_donate"
+        android:id="@+id/title_aaconnect"
         android:layout_width="327dp"
         android:layout_height="49dp"
         android:layout_marginStart="16dp"
@@ -29,7 +29,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/droid_serif"
-        android:text="@string/title_donate"
+        android:text="@string/title_aaconnect"
         android:textColor="@android:color/white"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
@@ -37,8 +37,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
     <ScrollView
-        android:id="@+id/donate"
+        android:id="@+id/nav_aaconnect"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -56,54 +58,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="false"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/donate_text1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autoLink="web"
-                android:clickable="true"
-                android:fontFamily="@font/nunito"
-                android:paddingTop="10dp"
-                android:paddingBottom="15dp"
-                android:text="@string/text1_donate"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/donate_text2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autoLink="web"
-                android:clickable="true"
-                android:fontFamily="@font/nunito"
-                android:paddingBottom="15dp"
-                android:text="@string/text2_donate"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/donate_title1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nunito"
-                android:paddingBottom="15dp"
-                android:text="@string/title1_donate"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/donate_text3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autoLink="web"
-                android:clickable="true"
-                android:fontFamily="@font/nunito"
-                android:paddingBottom="15dp"
-                android:text="@string/text3_donate"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/donate_text4"
+                android:id="@+id/aaconnect_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autoLink="web"
@@ -111,8 +69,9 @@
                 android:focusable="auto"
                 android:fontFamily="@font/nunito"
                 android:paddingBottom="10dp"
-                android:text="@string/text4_donate"
+                android:text="@string/aaconnect_text"
                 android:textSize="16sp" />
+
         </LinearLayout>
     </ScrollView>
 

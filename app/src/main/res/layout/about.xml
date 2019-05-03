@@ -19,25 +19,26 @@
         tools:srcCompat="@drawable/about" />
 
     <TextView
-        android:id="@+id/title_main"
-        android:layout_width="319dp"
-        android:layout_height="34dp"
+        android:id="@+id/title_about"
+        android:layout_width="327dp"
+        android:layout_height="49dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/droid_serif"
         android:text="@string/title_main"
         android:textColor="@android:color/white"
-        android:textSize="24sp"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:id="@+id/planningteamLV_main"
+        android:id="@+id/about"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -58,44 +59,17 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/planningTeam_title1"
+                android:id="@+id/about_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:clickable="true"
+                android:focusable="auto"
+                android:fontFamily="@font/nunito"
                 android:paddingBottom="10dp"
                 android:text="@string/text1_about"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/planningTeam_title1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="@string/text2_about"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="@string/title_aWayForward"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/planningTeam_title2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="@string/text3_about"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/about_text4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="@string/text4_about"
-                android:textSize="18sp" />
         </LinearLayout>
     </ScrollView>
 
