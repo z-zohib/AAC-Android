@@ -3,6 +3,7 @@ package com.example.aacv3;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,12 +15,32 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private RequestQueue mRequestQueue;
+    private StringRequest stringRequest;
+
+    private static final String TAG = MainActivity.class.getName();
+    private String agendaURL = "https://dl.dropboxusercontent.com/s/piavrsxzyp929lr/AgendaData.json?dl=0";
+    private String cohortsURL = "https://dl.dropboxusercontent.com/s/yoxo4gjgo4vpm26/CohortsData.json?dl=0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // setting up dynamic content through JSON retrieval
+        getDynamicJSONData();
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -46,6 +67,24 @@ public class MainActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_about);
         }
+    }
+
+    private void getDynamicJSONData() {
+        mRequestQueue = Volley.newRequestQueue(this);
+        stringRequest = new StringRequest(Request.Method.GET, agendaURL,   new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //  mJSONArray jsonArray = response.getJSONArray()
+                Log.i(TAG, "Response : " + response.toString());
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.i(TAG, "Error : " + error.toString());
+            }
+        });
+
+        mRequestQueue.add(stringRequest);
     }
 
     @Override
