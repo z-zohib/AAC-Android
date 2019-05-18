@@ -1,4 +1,4 @@
-package com.example.aacv3;
+package com.aac.events;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

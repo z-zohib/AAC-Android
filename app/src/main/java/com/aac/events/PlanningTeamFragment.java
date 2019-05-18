@@ -1,4 +1,4 @@
-package com.example.aacv3;
+package com.aac.events;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,14 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class PlanningTeamFragment extends Fragment {
     ListView lv;
@@ -68,7 +62,8 @@ public class PlanningTeamFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.planning_team, container, false);
         LinearLayout linearOrg = (LinearLayout) view.findViewById(R.id.linearPTScrollView);
-        LinearLayout innerLinear = (LinearLayout) view.findViewById(R.id.planningTeamLV_organizingCommittee);
+       /* LinearLayout innerLinear = (LinearLayout) view.findViewById(R.id.planningTeamLV_organizingCommittee);
+
 
         for (String orgName: orgNameArray) {
             TextView itemName = new TextView(getActivity());
@@ -84,7 +79,7 @@ public class PlanningTeamFragment extends Fragment {
         }
 
         ((ViewGroup)innerLinear.getParent()).removeView(innerLinear);
-        linearOrg.addView(innerLinear);
+        linearOrg.addView(innerLinear);*/
 
         return view;
     }

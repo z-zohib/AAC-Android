@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "552071843995",
+    "firebase_url": "https://aac-android.firebaseio.com",
+    "project_id": "aac-android",
+    "storage_bucket": "aac-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552071843995:android:4049ea7efc7e5f8b",
+        "android_client_info": {
+          "package_name": "com.aac.events"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "552071843995-bpktnjisler7fbkoubufsmsh8bacsecj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFyZCqrSHGtUteila9rySzi_ujvyBIfag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "552071843995-bpktnjisler7fbkoubufsmsh8bacsecj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

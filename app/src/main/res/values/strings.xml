@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AACv3</string>
+    <string name="app_name">AAC</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -10,23 +10,13 @@
 
     <string name="title_main">About</string>
     <string name="text1_about">
-        The Afghan-American diaspora has historically lacked a safe space for candid discussions about the issues most pertinent to us. Traditionally, our community has come together almost exclusively in social settings, including weddings, concerts, picnics, and sports tournaments. However, non of these gatherings have been conducive to serious discussions about the state of our community. Too often, taboo topics have been swept under the proverbal Afghan rug, never to be broached or approached.
-    </string>
-    <string name="text2_about">
-        Given the impoverished state of Afghanistan, it is understandable that so much of our diaspora\'s civic attention has focused on humanitarian relief for the Motherland. But in doing so, we have lost sight of our own community\'s struggles here in the United States.
-    </string>
-    <string name="title_aWayForward">A WAY FORWARD</string>
-    <string name="text3_about">
-        Given the impoverished state of Afghanistan, it is understandable that so much of our diaspora\'s civic attention has focused on humanitarian relief for the Motherland. But in doing so, we have lost sight of our own community\'s struggles here in the United States.
-    </string>
-    <string name="text4_about">
-        Given the impoverished state of Afghanistan, it is understandable that so much of our diaspora\'s civic attention has focused on humanitarian relief for the Motherland. But in doing so, we have lost sight of our own community\'s struggles here in the United States.
+        OUR MISSION\n\nTo provide a forum to address issues affecting the Afghan-American community, and a platform to facilitate dialogue, collaborate, and build relationships to strengthen our diaspora. \n\nOUR VISION\n\nAn empowered, supportive, and engaged Afghan-American community.\n\nOUR REASON\n\nThe Afghan-American diaspora has historically lacked a safe space for candid discussions about the issues most pertinent to us. Traditionally, our community has come together almost exclusively in social settings, including weddings, concerts, picnics, and sports tournaments. However, none of these gatherings have been conducive to serious discussions about the state of our community. Too often, taboo topics have been swept under the proverbial Afghan rug, never to be broached or approached.\n\nGiven the impoverished state of Afghanistan, it is understandable that so much of our diaspora’s civic attention has focused on humanitarian relief for the Motherland. But in doing so, we have lost sight of our own community\’s struggles here in the United States. Almost every Afghan family landed in the U.S. as refugees with few resources, but many are still trapped in the same socioeconomic class. According to the “Bay Area Muslim Study” by Drs. Farid Senzai and Hatem Bazian, Afghans have the fewest households making over $100,000 among any Muslim group in the San Francisco Bay Area. We are also the least educated group, with less than half of our community having pursued higher education. The fact that we only have statistics on Bay Area Afghans, and only in relation to other Muslim ethnicities, speaks to our underrepresented status nationwide—and just how much work we have to do as a community to move forward.\n\nOUR CORE VALUES\n\n• Build a sense of community around a diverse Afghan-American identity, while learning and embracing Afghan culture and history. \n• Provide a space for networks built on professional and academic connections for guidance, career growth, and development of leadership skills.\n• Engage in critical dialogue around challenging issues and activate the change to find solutions in our community.\n• Internalize norms and values that demonstrate respect, accountability, and flexibility towards different perspectives.\n\nA WAY FORWARD\n\nThis is where the Afghan-American Conference comes into the picture. AAC provides a forum for our community to address these difficult topics in a respectful, forward-thinking manner. It is a grassroots effort at shedding light on these pressing issues, inspiring action, and activating change from within the community. We won’t be able to address everything, nor do we have the answers to almost anything. Let us get the conversation started, let us share resources, and let us find those solutions together as a community.\n\nOUR COMMITTMENT\n\nThe Afghan-American Conference commits to keeping our conference an inclusive and safe environment for all of our participants.\n\nIf you have any questions, please do not hesitate to contact us.\n\nDIVERSITY\n\nDiversity is essential to our work at AAC. We know our Motherland, and our diaspora, are both incredibly diverse, and that diversity itself enriches the experience of attendees and allows for the full rich tapestry of our community to be present and contributing to the conference and organization. We know that to truly succeed, our space should be representative of our diversity as a community. We know we may fall short, but our goal is to strive and aim higher.\n\n Learn More: https://tinyurl.com/y5eh8w9s\n\nMENTAL WELLNESS\n\nOne of the recurring themes that arise during the weekend of our conference is mental health. The importance of mental health is often threaded through our keynotes, S.E.E.D. Talks, sessions, and panels. \n\nAs our community bands together to move forward, one stigmatized yet present challenge is maintaining mental wellness both for our loved ones and us.\n\nLearn More: https://tinyurl.com/y5tz9uqs\n\nANTI-DISCRIMINATION &amp; HARASSMENT\n\nOur policy was established to address issues, including harassment, abuse, and discrimination,  that have taken place within AAC.  It provides a way for AAC to address these situations and uphold a safe, supportive, empowered, and engaged community. It applies to all members of the conference and individuals that attend an AAC event or engage in conversations on AAC’s virtual platforms.  We are currently finalizing a revised and more comprehensive Code of Conduct policy that will be released shortly.\n\nLearn More: https://tinyurl.com/yxgyrv6w\n\nTHE CONFERENCE\n\nThe Afghan-American Conference is an annual nationwide conference for young community leaders to engage in meaningful dialogue, grow professionally and build relationships.\n\nThe conference is equal parts professional, cultural, spiritual, social, and personal. It is a holistic event consisting of keynote speeches, professional panels, skill-building workshops, roundtable discussions, safe space caucuses, town halls, networking mixers, entertainment, and even TED-style Talks.\n\nRead testimonials from past participants: https://tinyurl.com/y34tljar\n\nTHE EVOLUTION \n\nIn April 2015, the first Afghan-American Conference was hosted at U.C. Berkeley by eight young Afghan-Americans from across the United States. The space was an opportunity for our diaspora to have difficult conversations in an engaging and respectful way. Since then, the conference has grown and spread across the nation.\n\n
     </string>
 
 
-    <string name="title_planning_team">Planning Team 2019</string>
+    <string name="title_planning_team"> </string>
     <string name="text1_planning_team">
-        The Afghan-American Conference started as an idea implemented by a group of students and working professionals volunteering remotely from across the United States. Our team is comprised of individuals with deep passion for our community, a commitment to service, and diverse personal and professional experiences that seek to advance AAC’s vision of building a supportive, empowered, and engaged Afghan-American community.
+        The Afghan-American Conference started as an idea implemented by a group of students and working professionals volunteering remotely from across the United States. Our team is comprised of individuals with deep passion for our community, a commitment to service, and diverse personal and professional experiences that seek to advance AAC’s vision of building a supportive, empowered, and engaged Afghan-American community. \n\n Learn more about our 2019 Planning Team: https://tinyurl.com/y3tzdhlc\n\n\n\n\n
     </string>
     <string name="title1_planning_team">Organizing Committee</string>
     <string name="title2_planning_team">2019 Subcommittee</string>
@@ -106,6 +96,57 @@
         As a conference intended to bring together Afghan-Americans from all walks of life and various stages of professional development, it is our intention to ensure that cost does not become an obstacle to participation. In order to ensure AAC\'s success and the participation of those who have applied, we have set ambitious goals this year to help with fee waivers to attend the conference and subsidized ticket prices for those with financial need.
     </string>
     <string name="text4_donate">
-        Our team continues to work diligently to manage costs and pursue funding and in-kind support for the event.\nHere\'s what you can do to help: \n\n• Donate to this campaign. \n\n• Support the fee waiver fund: sponsor a ticket for someone else to attend who is otherwise unable. \n\n• Share the link and spread the word. \n\n• Apply to attend the Afghan-American Conference to learn, discuss, and take steps towards strengthening our diaspora. \n\n• Apply to speak or contact us to share your story, pictures, and experiences. \n\n• Use the hashtag #AfgAm18 on social media. \n\nYour support has been critical to our past success and we want you to be a part of the great things that lie ahead. With your help, we can continue and even expand our work for the community. \n\nWe\'re also pleased to share that we have commenced the process of becoming a 501&#169;(3) nonprofit organization so your donation will be tax-deductible.
+        Our team continues to work diligently to manage costs and pursue funding and in-kind support for the event.\nHere\'s what you can do to help: \n\n• Donate to this campaign. \n\n• Support the fee waiver fund: sponsor a ticket for someone else to attend who is otherwise unable. \n\n• Share the link and spread the word. \n\n• Apply to attend the Afghan-American Conference to learn, discuss, and take steps towards strengthening our diaspora. \n\n• Apply to speak or contact us to share your story, pictures, and experiences. \n\n• Use the hashtag #AfgAm18 on social media. \n\nYour support has been critical to our past success and we want you to be a part of the great things that lie ahead. With your help, we can continue and even expand our work for the community. \n\nWe\'re also pleased to share that we have commenced the process of becoming a 501&#169;(3) nonprofit organization so your donation will be tax-deductible. www.afghanamericanconference.com
     </string>
+
+    <string name="aacare_text">
+        AAC can be an uplifting, inspiring, and empowering experience for many. However, we have also found that three days of interactions and conversations can also be overwhelming and difficult for some. This year, we hope to be proactive and better prepared for participants that may need some additional support by incorporating an AACare Team, a team of \’on-call\’ individuals readily available to provide support for participants that weekend. \n\nThe AACare Team will be responsible for helping participants who may have difficulty during the weekend - ranging from anxiety being around so many people, being triggered from particular conversations/topics, or just needing a person to check-in with. The team will consist of trusted alumni, professional therapists, and/or individuals that have experience working in mental health or related fields.\n\n If you need to get in contact with the AACare team, please call or text 818-294-4328
+    </string>
+    <string name="title_aacare">
+        AACare
+    </string>
+
+    <string name="norms_text">
+        1. Step up, Step back\n\n• Let your voice be heard but don\'t dominate the conversation\n\n• Don\'t piggyback\n\n2. Be Mindful of Intent vs. Impact\n\n• Assume the best in others\n\n• Challenge the idea, not the individual\n\n3. Affirm one another\n\n• Engage, support, empower\n\n• Encourage, listen, believe\n\n4. Be Present\n\n• One mic, one voice\n\n• No side convos, whispering, or shouting out\n\n5. Be unreasonable\n\n• Find strength in vulnerability\n\n• Step outside your comfort zone &amp; sit in the discomfort\n\n6. Be Flexible\n\n• Try on new views\n\n• Solicit &amp; accept feedback\n\n7. Honor Each Other\n\n• Maintain confidentiality\n\n• Be on time\n\n• Translate to English, always\n\n8. Connect\n\n• Make new friends\n\n• Sit &amp; talk to someone new each session\n\n9. Take Action\n\n• Forward the work of your community\n\n• Be a catalyst\n\nBrave/Safe Space Additions\n\n1. Challenge the idea, not the person\n\n2. One mic, one voice\n\n3. What\'s said here, stays here\n\n4. No video/audio recordings\n\n5. Speak from your own experience
+    </string>
+    <string name="title_norms">
+        Norms
+    </string>
+
+    <string name="sponsor_text">
+        AAC would not be possible without the support of our generous sponsors and scholarship donors. \n\nTo view a complete list of our sponsors and scholarship donors, visit www.afghanamericanconference.org
+    </string>
+    <string name="title_sponsor">
+        Sponsors &amp; Scholarships
+    </string>
+
+    <string name="aaconnect_text">
+        WHAT IS AACONNECT?\n\nAAConnect is an exclusive Afghan-American professional network that aims to provide a platform for members to share resources, advice, career opportunities, and to provide skills-based trainings for its members.\n\nWHAT DOES AACONNECT PROVIDE?\n\nAAConnect members will benefit from:\n\n• A membership base of Afghan professionals from legal, banking, consulting, finance, corporate development, entrepreneurship government, non-profit and other related &amp; similar fields\n\n• Skills-based training events which include podcasts and forums with industry leaders\n\n• Access to a network of global job postings\n\n• Social-networking and mentorship opportunities\n\nHOW IS AACONNECT DIFFERENT FROM AMP?\n\nThe Afghan Mentorship Program (AMP) is a community-driven organization dedicated to helping Afghan youth pursue higher education. AMP connects Afghan-American youth, mostly high school students, to successfully qualified Afghan-American mentors who can provide the advice and guidance they need. AAConnect is focused on catering to Afghan professionals who want to advance their careers.\n\nHOW DO I JOIN AACONNECT?\n\nAll AAC attendees and alumni are automatically enrolled in AAConnect, unless they choose to opt out.
+    </string>
+    <string name="title_aaconnect">
+        AAConnect
+    </string>
+
+    <string name="newsletter_text">
+        Already looking to stay connected post-AAC? Sign up for the official Afghan-American Conference newsletter here: http://eepurl.com/cw24IT
+    </string>
+    <string name="title_newsletter">
+        Newsletter
+    </string>
+
+    <string name="title_activity_splash__screen">Splash_Screen</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="credits_text">
+        Photography provided by Wayve Media, Khaled Nurhssein, Arash Azzizada, Shab + Coop, Daud Kabiri, Obaid Hofiani.\n\n AAC mobile application developed by Zohib Zalmy and Omar Noorzay.
+    </string>
+    <string name="title_credits">
+        Credits
+    </string>
+
+    <string name="donate_button">
+        Donate
+    </string>
+
 </resources>

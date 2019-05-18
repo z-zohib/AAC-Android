@@ -18,14 +18,48 @@
             android:title="FAQ" />
     </group>
 
-    <item android:title="Communicate">
+
+
+        <item android:title="AAC 2019">
+            <menu>
+                <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_norms"
+                    android:title="Norms" />
+                <item
+                    android:id="@+id/nav_aacare"
+                    android:title="AACare" />
+                <item
+                    android:id="@+id/nav_sponsor"
+                    android:title="Sponsors" />
+                </group>
+            </menu>
+        </item>
+
+    <item android:title="Initiatives">
         <menu>
+            <group android:checkableBehavior="single">
+            <item
+                android:id="@+id/nav_aaconnect"
+                android:title="AAConnect" />
+            <item
+                android:id="@+id/nav_newsletter"
+                android:title="Newsletter" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="More Information">
+        <menu>
+            <group android:checkableBehavior="single">
+
             <item
                 android:id="@+id/nav_contact_us"
                 android:title="Contact Us" />
             <item
                 android:id="@+id/nav_credits"
                 android:title="Credits" />
+            </group>
         </menu>
     </item>
 

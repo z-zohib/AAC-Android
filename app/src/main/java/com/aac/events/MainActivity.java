@@ -1,5 +1,6 @@
-package com.example.aacv3;
+package com.aac.events;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,7 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import com.onesignal.OneSignal;
+
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -45,14 +47,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -67,6 +61,12 @@ public class MainActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_about);
         }
+
+        // OneSignal Initialization
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
     }
 
     private void getDynamicJSONData() {
@@ -136,11 +136,29 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_donate:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DonateFragment()).commit();
                 break;
+            case R.id.nav_norms:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NormsFragment()).commit();
+                break;
+            case R.id.nav_aacare:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AacareFragment()).commit();
+                break;
+            case R.id.nav_sponsor:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SponsorFragment()).commit();
+                break;
+            case R.id.nav_aaconnect:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AaconectFragment()).commit();
+                break;
+            case R.id.nav_newsletter:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsletterFragment()).commit();
+                break;
             case R.id.nav_contact_us:
-                Toast.makeText(this, "Contact Us", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("plain/text");
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "afghanamericanconference@gmail.com" });
+                startActivity(Intent.createChooser(intent, ""));
                 break;
             case R.id.nav_credits:
-                Toast.makeText(this, "Credits", Toast.LENGTH_SHORT).show();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CreditsFragment()).commit();
                 break;
         }
 
