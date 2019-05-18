@@ -14,6 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.onesignal.OneSignal;
 
 
@@ -25,6 +28,17 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Writer;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -35,13 +49,17 @@ public class MainActivity extends AppCompatActivity
     private static final String TAG = MainActivity.class.getName();
     private String agendaURL = "https://dl.dropboxusercontent.com/s/piavrsxzyp929lr/AgendaData.json?dl=0";
     private String cohortsURL = "https://dl.dropboxusercontent.com/s/yoxo4gjgo4vpm26/CohortsData.json?dl=0";
+    private String testURL = "https://api.myjson.com/bins/rc6p2";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // setting up dynamic content through JSON retrieval
-        getDynamicJSONData();
+        mRequestQueue = Volley.newRequestQueue(this);
+        //getDynamicJSONData();
+        getDynamicJSONArray();
+        //testGetJSON();
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -70,7 +88,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void getDynamicJSONData() {
-        mRequestQueue = Volley.newRequestQueue(this);
         stringRequest = new StringRequest(Request.Method.GET, agendaURL,   new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -85,6 +102,116 @@ public class MainActivity extends AppCompatActivity
         });
 
         mRequestQueue.add(stringRequest);
+    }
+
+    private void getDynamicJSONArray() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, agendaURL, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Writer output = null;
+                            File file = new File(getFilesDir(), "fileData.json");
+                            output = new BufferedWriter(new FileWriter(file));
+                            output.write(response.toString());
+                            output.close();
+                            Toast.makeText(getApplicationContext(), "Composition saved", Toast.LENGTH_LONG).show();
+                            //String[] a = fileList();
+                            //String readString = "";
+                            //a.toString();
+                            //try {
+                            //    FileInputStream b = openFileInput("fileData.json");
+                            //    b.read(readString.getBytes());
+                            //    readString.toString();
+                            //    b.close();
+                            //    readString.toString();
+                            //} catch (Exception e) {
+                            //    Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                            //}
+
+
+                            StringBuffer datax = new StringBuffer("");
+                            try {
+                                FileInputStream fIn = openFileInput ( "fileData.json" ) ;
+                                InputStreamReader isr = new InputStreamReader( fIn ) ;
+                                BufferedReader buffreader = new BufferedReader( isr ) ;
+
+                                String readString = buffreader.readLine ( ) ;
+                                while ( readString != null ) {
+                                    datax.append(readString);
+                                    readString = buffreader.readLine ( ) ;
+                                }
+
+                                isr.close ( ) ;
+                            } catch ( IOException ioe ) {
+                                ioe.printStackTrace ( ) ;
+                            }
+                            String answer = datax.toString();
+                            Log.i("jsonnnnnn", answer);
+
+
+
+                        } catch ( Exception e) {
+                            Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+
+
+                        try {
+                            JSONArray sessionDays = response.getJSONArray("sessionDays");
+
+                            // sessiondays length should be 3 (fri,sat,sun)
+                            for (int i = 0; i < sessionDays.length(); i++) {
+                                Log.i(TAG, "ENTERED: sessionDay: " + i);
+                                JSONObject sessionDay = sessionDays.getJSONObject(i);
+                                JSONArray sessions = sessionDay.getJSONArray("sessions");
+
+                                for (int j = 0; j < sessions.length(); j++) {
+                                    Log.i(TAG, "SESSIONDAY: " + j + " session: " + j);
+                                    JSONObject session = sessions.getJSONObject(j);
+                                    JSONArray concurrentSessions = session.getJSONArray("concurrentSessions");
+
+                                    for (int z = 0; z < concurrentSessions.length(); z++) {
+                                        JSONObject concurrentSession = concurrentSessions.getJSONObject(z);
+                                        Log.i(TAG, "ID: " + concurrentSession.getString("id") + " Title: " + concurrentSession.getString("title"));
+                                    }
+                                }
+
+                            }
+                        } catch (JSONException error) {
+                            error.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        mRequestQueue.add(request);
+    }
+
+    private void testGetJSON() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, testURL, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        String title = null;
+                        try {
+                            title = response.getString("title");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        Log.i("TESTURL", "Title: " + title);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        mRequestQueue.add(request);
     }
 
     @Override
