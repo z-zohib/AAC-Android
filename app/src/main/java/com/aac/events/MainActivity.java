@@ -47,9 +47,11 @@ public class MainActivity extends AppCompatActivity
     private StringRequest stringRequest;
 
     private static final String TAG = MainActivity.class.getName();
-    private String agendaURL = "https://dl.dropboxusercontent.com/s/piavrsxzyp929lr/AgendaData.json?dl=0";
-    private String cohortsURL = "https://dl.dropboxusercontent.com/s/yoxo4gjgo4vpm26/CohortsData.json?dl=0";
-    private String testURL = "https://api.myjson.com/bins/rc6p2";
+    protected final static String agendaURL = "https://dl.dropboxusercontent.com/s/piavrsxzyp929lr/AgendaData.json?dl=0";
+    protected final static String cohortsURL = "https://dl.dropboxusercontent.com/s/yoxo4gjgo4vpm26/CohortsData.json?dl=0";
+    protected final static String testURL = "https://api.myjson.com/bins/rc6p2";
+    protected final static String agendaFileName = "agendaData.json";
+    protected final static String sponsorFileName = "sponsorData.json";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,105 +106,93 @@ public class MainActivity extends AppCompatActivity
         mRequestQueue.add(stringRequest);
     }
 
+    private JSONArray parseAgenda(JSONObject response) throws JSONException {
+        JSONArray sessionDays = response.getJSONArray("sessionDays");
+        JSONArray eventsArray = new JSONArray();
+
+        // sessiondays length should be 3 (0 = fri, 1 = sat, 2 = sun)
+        for (int dayIndex = 0; dayIndex < sessionDays.length(); dayIndex++) {
+            Log.i(TAG, "ENTERED: sessionDay: " + dayIndex);
+            JSONObject sessionDay = sessionDays.getJSONObject(dayIndex);
+            JSONArray sessions = sessionDay.getJSONArray("sessions");
+
+            // sessions length is number of time slots (0 = 12pm-1:15pm, 1 = 1:30pm-3pm, etc...)
+            for (int sessionTimeIndex = 0; sessionTimeIndex < sessions.length(); sessionTimeIndex++) {
+                Log.i(TAG, "SESSIONDAY: " + sessionTimeIndex + " session: " + sessionTimeIndex);
+                JSONObject session = sessions.getJSONObject(sessionTimeIndex);
+                JSONArray concurrentSessions = session.getJSONArray("concurrentSessions");
+
+                // the concurrentsession is the actual event (containing the location, etc...
+                for (int eventIndex = 0; eventIndex < concurrentSessions.length(); eventIndex++) {
+                    JSONObject event = new JSONObject();
+                    JSONObject concurrentSession = concurrentSessions.getJSONObject(eventIndex);
+                    event.put("id", concurrentSession.getString("id"));
+                    event.put("description", concurrentSession.getString("description"));
+                    event.put("location", concurrentSession.getString("location"));
+                    event.put("startDate", concurrentSession.getString("startDate"));
+                    event.put("endDate", concurrentSession.getString("endDate"));
+                    event.put("title", concurrentSession.getString("title"));
+                    event.put("evaluationURL", concurrentSession.getString("evaluationURL"));
+                    event.put("concurrentSessionId", sessionTimeIndex);
+                    event.put("day", dayIndex);
+                    eventsArray.put(event);
+                }
+            }
+        }
+
+        return eventsArray;
+    }
+
+    private void writeJsonToFile(JSONArray eventsArray) {
+        // directly saves the response JSON into the android directory without parsing
+        try {
+            Writer output = null;
+            File file = new File(getFilesDir(), agendaFileName);
+            output = new BufferedWriter(new FileWriter(file));
+            output.write(eventsArray.toString());
+            output.close();
+            Toast.makeText(getApplicationContext(), "Composition saved", Toast.LENGTH_LONG).show();
+            Log.i(TAG, "Json imported to file: " + eventsArray.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void readJsonFromFile(String fileName) {
+        // retrieves a file from the android directory as a string and prints it in the log
+        StringBuffer datax = new StringBuffer("");
+        try {
+            FileInputStream fIn = openFileInput ( fileName ) ;
+            InputStreamReader isr = new InputStreamReader( fIn ) ;
+            BufferedReader buffreader = new BufferedReader( isr ) ;
+
+            String readString = buffreader.readLine ( ) ;
+            while ( readString != null ) {
+                datax.append(readString);
+                readString = buffreader.readLine ( ) ;
+            }
+
+            isr.close ( ) ;
+        } catch ( IOException ioe ) {
+            ioe.printStackTrace ( ) ;
+        }
+        String answer = datax.toString();
+        Log.i("jsonnnnnn", answer);
+    }
+
     private void getDynamicJSONArray() {
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, agendaURL, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        // PARSING; iterates through the layers of arrays and objects in the JSON to the core of the events
                         try {
-                            Writer output = null;
-                            File file = new File(getFilesDir(), "fileData.json");
-                            output = new BufferedWriter(new FileWriter(file));
-                            output.write(response.toString());
-                            output.close();
-                            Toast.makeText(getApplicationContext(), "Composition saved", Toast.LENGTH_LONG).show();
-                            //String[] a = fileList();
-                            //String readString = "";
-                            //a.toString();
-                            //try {
-                            //    FileInputStream b = openFileInput("fileData.json");
-                            //    b.read(readString.getBytes());
-                            //    readString.toString();
-                            //    b.close();
-                            //    readString.toString();
-                            //} catch (Exception e) {
-                            //    Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                            //}
-
-
-                            StringBuffer datax = new StringBuffer("");
-                            try {
-                                FileInputStream fIn = openFileInput ( "fileData.json" ) ;
-                                InputStreamReader isr = new InputStreamReader( fIn ) ;
-                                BufferedReader buffreader = new BufferedReader( isr ) ;
-
-                                String readString = buffreader.readLine ( ) ;
-                                while ( readString != null ) {
-                                    datax.append(readString);
-                                    readString = buffreader.readLine ( ) ;
-                                }
-
-                                isr.close ( ) ;
-                            } catch ( IOException ioe ) {
-                                ioe.printStackTrace ( ) ;
-                            }
-                            String answer = datax.toString();
-                            Log.i("jsonnnnnn", answer);
-
-
-
-                        } catch ( Exception e) {
-                            Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-
-
-                        try {
-                            JSONArray sessionDays = response.getJSONArray("sessionDays");
-
-                            // sessiondays length should be 3 (fri,sat,sun)
-                            for (int i = 0; i < sessionDays.length(); i++) {
-                                Log.i(TAG, "ENTERED: sessionDay: " + i);
-                                JSONObject sessionDay = sessionDays.getJSONObject(i);
-                                JSONArray sessions = sessionDay.getJSONArray("sessions");
-
-                                for (int j = 0; j < sessions.length(); j++) {
-                                    Log.i(TAG, "SESSIONDAY: " + j + " session: " + j);
-                                    JSONObject session = sessions.getJSONObject(j);
-                                    JSONArray concurrentSessions = session.getJSONArray("concurrentSessions");
-
-                                    for (int z = 0; z < concurrentSessions.length(); z++) {
-                                        JSONObject concurrentSession = concurrentSessions.getJSONObject(z);
-                                        Log.i(TAG, "ID: " + concurrentSession.getString("id") + " Title: " + concurrentSession.getString("title"));
-                                    }
-                                }
-
-                            }
+                            JSONArray eventsArray = parseAgenda(response);
+                            writeJsonToFile(eventsArray);
+                            readJsonFromFile(agendaFileName);
                         } catch (JSONException error) {
                             error.printStackTrace();
                         }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-
-        mRequestQueue.add(request);
-    }
-
-    private void testGetJSON() {
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, testURL, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        String title = null;
-                        try {
-                            title = response.getString("title");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        Log.i("TESTURL", "Title: " + title);
                     }
                 }, new Response.ErrorListener() {
             @Override
