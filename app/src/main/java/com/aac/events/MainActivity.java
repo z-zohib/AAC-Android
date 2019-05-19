@@ -256,6 +256,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_norms:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NormsFragment()).commit();
                 break;
+            case R.id.nav_agenda:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AgendaFragment()).commit();
+                break;
             case R.id.nav_aacare:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AacareFragment()).commit();
                 break;
