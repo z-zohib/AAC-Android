@@ -139,6 +139,12 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_norms:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NormsFragment()).commit();
                 break;
+            case R.id.nav_speakers:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SpeakersFragment()).commit();
+                break;
+            case R.id.nav_cohorts:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CohortsFragment()).commit();
+                break;
             case R.id.nav_aacare:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AacareFragment()).commit();
                 break;
