@@ -31,36 +31,69 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Writer;
+import java.util.ArrayList;
 
 import static com.aac.events.MainActivity.agendaFileName;
 import static com.aac.events.MainActivity.agendaURL;
 
 public class AgendaFragment extends Fragment {
-    ListView lv;
-    String[] orgNameArray = {"Zachia Nazarzai", "Salmon Hossein", "Yousuf Azam", "Susan Zaca", "Gina Karimi", "Homaira Hosseini", "Sara Noorzay", "Madina Salemi Nooristani", "Omar Aziz", "Sabrina Barkezai", "Samim Abedi", "Sophie Hossein", "Haroun Dada"};
-    String[] orgTitleArray = {"Executive Director", "Executive Director", "Finance Co-Chair, Development", "Communications Chair", "Applications Chair", "Community Initiatives Chair", "Community Engagement Chair", "Finance Co-Chair", "Programming Co-Chair", "Marketing Chair", "Professional Network Chair", "Programming Co-Chair", "Logistics Chair"};
-    String[] orgDescriptionArray = {};
-
-    String[] subNameArray = {"Sofia Schersei", "Atiq Ahmadulla", "Nealofar Panjshiri", "Sabrina Noorzay", "Sajad Ghanizada"};
-    String[] subTitleArray = {"Logistics Subcommittee", "Programming Subcommittee", "Logistics Subcommittee", "Marketing Subcommittee", "Marketing Subcommittee"};
-    String[] supDescriptionArray = {};
-
     private JSONArray eventsArr;
     private static final String TAG = MainActivity.class.getName();
+
+    protected ArrayList<Event> fridaySessions = new ArrayList<>();
+    protected ArrayList<Event> saturdaySessions = new ArrayList<>();
+    protected ArrayList<Event> sundaySessions = new ArrayList<>();
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //return inflater.inflate(R.layout.norms, container, false);
-
         View view = inflater.inflate(R.layout.agenda, container, false);
         eventsArr = getAgendaJsonArr();
         LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.linearlayout_agenda);
-        TextView textView = new TextView(getActivity());
+        TextView textView = null;
         try {
-            textView.setText(eventsArr.toString(2));
+            for (int i = 0; i < eventsArr.length(); i++) {
+                JSONObject event = eventsArr.getJSONObject(i);
+
+                if (event.getInt("day") == 0) {
+                    fridaySessions.add(new Event(event));
+                } else if (event.getInt("day") == 1) {
+                    saturdaySessions.add(new Event(event));
+                } else if (event.getInt("day") == 2) {
+                    sundaySessions.add(new Event(event));
+                } else {
+                    Log.i(TAG, "Event Day initialized and categorized incorrectly");
+                }
+            }
+
+            textView = new TextView(getActivity());
+            textView.setText("FRIDAY\n");
             linearLayout.addView(textView);
+            for (Event session: fridaySessions) {
+                textView = new TextView(getActivity());
+                textView.setText(session.getTitle());
+                linearLayout.addView(textView);
+            }
+
+            textView = new TextView(getActivity());
+            textView.setText("\nSATURDAY\n");
+            linearLayout.addView(textView);
+            for (Event session: saturdaySessions) {
+                textView = new TextView(getActivity());
+                textView.setText(session.getTitle());
+                linearLayout.addView(textView);
+            }
+
+            textView = new TextView(getActivity());
+            textView.setText("\nSUNDAY\n");
+            linearLayout.addView(textView);
+            for (Event session: sundaySessions) {
+                textView = new TextView(getActivity());
+                textView.setText(session.getTitle());
+                linearLayout.addView(textView);
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -83,9 +116,6 @@ public class AgendaFragment extends Fragment {
 
         ((ViewGroup)innerLinear.getParent()).removeView(innerLinear);
         linearOrg.addView(innerLinear);*/
-
-        // TODO:
-
 
         return view;
     }
@@ -123,8 +153,8 @@ public class AgendaFragment extends Fragment {
 
     class CustomAdapter extends BaseAdapter {
         @Override
-        public int getCount() {
-            return 0;
+        public int getCount()  {
+            return eventsArr.length();
         }
 
         @Override
