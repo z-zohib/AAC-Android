@@ -9,32 +9,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Writer;
 import java.util.ArrayList;
 
 import static com.aac.events.MainActivity.agendaFileName;
-import static com.aac.events.MainActivity.agendaURL;
 
 public class AgendaFragment extends Fragment {
     private JSONArray eventsArr;
@@ -51,12 +39,11 @@ public class AgendaFragment extends Fragment {
         //return inflater.inflate(R.layout.norms, container, false);
         View view = inflater.inflate(R.layout.agenda, container, false);
         eventsArr = getAgendaJsonArr();
-        LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.linearlayout_agenda);
-        TextView textView = null;
         try {
             for (int i = 0; i < eventsArr.length(); i++) {
                 JSONObject event = eventsArr.getJSONObject(i);
 
+                // initializing sessionArrays
                 if (event.getInt("day") == 0) {
                     fridaySessions.add(new Event(event));
                 } else if (event.getInt("day") == 1) {
@@ -67,57 +54,48 @@ public class AgendaFragment extends Fragment {
                     Log.i(TAG, "Event Day initialized and categorized incorrectly");
                 }
             }
-
-            textView = new TextView(getActivity());
-            textView.setText("FRIDAY\n");
-            linearLayout.addView(textView);
-            for (Event session: fridaySessions) {
-                textView = new TextView(getActivity());
-                textView.setText(session.getTitle());
-                linearLayout.addView(textView);
-            }
-
-            textView = new TextView(getActivity());
-            textView.setText("\nSATURDAY\n");
-            linearLayout.addView(textView);
-            for (Event session: saturdaySessions) {
-                textView = new TextView(getActivity());
-                textView.setText(session.getTitle());
-                linearLayout.addView(textView);
-            }
-
-            textView = new TextView(getActivity());
-            textView.setText("\nSUNDAY\n");
-            linearLayout.addView(textView);
-            for (Event session: sundaySessions) {
-                textView = new TextView(getActivity());
-                textView.setText(session.getTitle());
-                linearLayout.addView(textView);
-            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        // commented below was work on two scrollview inside one linear layout or viceversa
-        /*LinearLayout linearOrg = (LinearLayout) view.findViewById(R.id.linearPTScrollView);
-        LinearLayout innerLinear = (LinearLayout) view.findViewById(R.id.planningTeamLV_organizingCommittee);
 
-        for (String orgName: orgNameArray) {
-            TextView itemName = new TextView(getActivity());
-            itemName.setText(orgName);
-            innerLinear.addView(itemName);
-        }
-
-        for (String subName: subNameArray) {
-            innerLinear = (LinearLayout) view.findViewById(R.id.planningTeamLV_subCommittee);
-            TextView itemName = new TextView(getActivity());
-            itemName.setText(subName);
-            innerLinear.addView(itemName);
-        }
-
-        ((ViewGroup)innerLinear.getParent()).removeView(innerLinear);
-        linearOrg.addView(innerLinear);*/
+        ListView listView = (ListView) view.findViewById(R.id.friday_list);
+        CustomAdapter customAdapter = new CustomAdapter();
+        listView.setAdapter(customAdapter);
 
         return view;
+    }
+
+    class CustomAdapter extends BaseAdapter {
+        @Override
+        public int getCount()  {
+            return eventsArr.length();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View view, ViewGroup viewGroup) {
+            view = getLayoutInflater().inflate(R.layout.session_list_layout, null);
+
+            TextView textViewTime = (TextView) view.findViewById(R.id.session_time);
+            TextView textViewTitle = (TextView) view.findViewById(R.id.session_title);
+            TextView textViewDescription = (TextView) view.findViewById(R.id.session_description);
+
+            textViewTime.setText("11:00-\n\n12:00");
+            //TODO: if the getTitle() string is greater then 25 characters, then cut off string
+            textViewTitle.setText(fridaySessions.get(position).getTitle());
+            textViewDescription.setText(fridaySessions.get(position).getLocation());
+
+            return view;
+        }
     }
 
     private String getAgendaJsonStr() {
@@ -151,25 +129,4 @@ public class AgendaFragment extends Fragment {
         return events;
     }
 
-    class CustomAdapter extends BaseAdapter {
-        @Override
-        public int getCount()  {
-            return eventsArr.length();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            return null;
-        }
-    }
 }

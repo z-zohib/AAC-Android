@@ -6,48 +6,47 @@
 
     <TextView
         android:id="@+id/session_time"
-        android:text="start -\n\nendTime"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="27dp" />
-
-    <ImageView
-        android:id="@+id/session_img"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignTop="@+id/session_time"
-        android:layout_toRightOf="@+id/session_time"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="27dp"
-        app:srcCompat="@drawable/ic_menu_gallery" />
+        android:layout_marginTop="15dp" />
 
     <TextView
         android:id="@+id/session_title"
-        android:textSize="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/session_time"
         android:layout_marginStart="22dp"
         android:layout_marginLeft="22dp"
-        android:layout_alignTop="@+id/session_img"
-        android:layout_toRightOf="@+id/session_img"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:text="TextView" />
+        android:layout_toEndOf="@+id/session_time"
+        android:layout_toRightOf="@+id/session_time"
+        android:layout_toStartOf="@id/session_addbtn"
+        android:layout_toLeftOf="@id/session_addbtn"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/session_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="13sp"
         android:layout_marginStart="22dp"
         android:layout_marginLeft="22dp"
-        android:layout_alignBottom="@+id/session_img"
-        android:layout_toRightOf="@+id/session_img"
-        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/session_time"
+        android:layout_toLeftOf="@+id/session_addbtn"
+        android:layout_alignBottom="@+id/session_time"/>
+
+    <Button
+        android:id="@+id/session_addbtn"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignParentEnd="true"
-        android:text="TextView" />
-    android:layout_width="match_parent" android:layout_height="match_parent">
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginBottom="10dp"
+        android:text="+" />
 
 </RelativeLayout>
