@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -62,13 +63,20 @@ public class AgendaFragment extends Fragment {
         CustomAdapter customAdapter = new CustomAdapter();
         listView.setAdapter(customAdapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
+
         return view;
     }
 
     class CustomAdapter extends BaseAdapter {
         @Override
         public int getCount()  {
-            return eventsArr.length();
+            return fridaySessions.size();
         }
 
         @Override
@@ -89,6 +97,9 @@ public class AgendaFragment extends Fragment {
             TextView textViewTitle = (TextView) view.findViewById(R.id.session_title);
             TextView textViewDescription = (TextView) view.findViewById(R.id.session_description);
 
+            if (position >= fridaySessions.size()) {
+                return view;
+            }
             textViewTime.setText("11:00-\n\n12:00");
             //TODO: if the getTitle() string is greater then 25 characters, then cut off string
             textViewTitle.setText(fridaySessions.get(position).getTitle());

@@ -34,7 +34,9 @@
         android:layout_marginStart="22dp"
         android:layout_marginLeft="22dp"
         android:layout_toRightOf="@+id/session_time"
+        android:layout_toEndOf="@+id/session_time"
         android:layout_toLeftOf="@+id/session_addbtn"
+        android:layout_toStartOf="@+id/session_addbtn"
         android:layout_alignBottom="@+id/session_time"/>
 
     <Button
