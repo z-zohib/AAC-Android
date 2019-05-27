@@ -14,6 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.onesignal.OneSignal;
 
 
@@ -25,6 +28,17 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Writer;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -33,15 +47,21 @@ public class MainActivity extends AppCompatActivity
     private StringRequest stringRequest;
 
     private static final String TAG = MainActivity.class.getName();
-    private String agendaURL = "https://dl.dropboxusercontent.com/s/piavrsxzyp929lr/AgendaData.json?dl=0";
-    private String cohortsURL = "https://dl.dropboxusercontent.com/s/yoxo4gjgo4vpm26/CohortsData.json?dl=0";
+    protected final static String agendaURL = "https://dl.dropboxusercontent.com/s/piavrsxzyp929lr/AgendaData.json?dl=0";
+    protected final static String cohortsURL = "https://dl.dropboxusercontent.com/s/yoxo4gjgo4vpm26/CohortsData.json?dl=0";
+    protected final static String testURL = "https://api.myjson.com/bins/rc6p2";
+    protected final static String agendaFileName = "agendaData.json";
+    protected final static String sponsorFileName = "sponsorData.json";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // setting up dynamic content through JSON retrieval
-        getDynamicJSONData();
+        mRequestQueue = Volley.newRequestQueue(this);
+        //getDynamicJSONData();
+        getDynamicJSONArray();
+        //testGetJSON();
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -70,7 +90,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void getDynamicJSONData() {
-        mRequestQueue = Volley.newRequestQueue(this);
         stringRequest = new StringRequest(Request.Method.GET, agendaURL,   new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -85,6 +104,104 @@ public class MainActivity extends AppCompatActivity
         });
 
         mRequestQueue.add(stringRequest);
+    }
+
+    private JSONArray parseAgenda(JSONObject response) throws JSONException {
+        JSONArray sessionDays = response.getJSONArray("sessionDays");
+        JSONArray eventsArray = new JSONArray();
+
+        // sessiondays length should be 3 (0 = fri, 1 = sat, 2 = sun)
+        for (int dayIndex = 0; dayIndex < sessionDays.length(); dayIndex++) {
+            Log.i(TAG, "ENTERED: sessionDay: " + dayIndex);
+            JSONObject sessionDay = sessionDays.getJSONObject(dayIndex);
+            JSONArray sessions = sessionDay.getJSONArray("sessions");
+
+            // sessions length is number of time slots (0 = 12pm-1:15pm, 1 = 1:30pm-3pm, etc...)
+            for (int sessionTimeIndex = 0; sessionTimeIndex < sessions.length(); sessionTimeIndex++) {
+                Log.i(TAG, "SESSIONDAY: " + sessionTimeIndex + " session: " + sessionTimeIndex);
+                JSONObject session = sessions.getJSONObject(sessionTimeIndex);
+                JSONArray concurrentSessions = session.getJSONArray("concurrentSessions");
+
+                // the concurrentsession is the actual event (containing the location, etc...
+                for (int eventIndex = 0; eventIndex < concurrentSessions.length(); eventIndex++) {
+                    JSONObject event = new JSONObject();
+                    JSONObject concurrentSession = concurrentSessions.getJSONObject(eventIndex);
+                    event.put("id", concurrentSession.getString("id"));
+                    event.put("description", concurrentSession.getString("description"));
+                    event.put("location", concurrentSession.getString("location"));
+                    event.put("startDate", concurrentSession.getString("startDate"));
+                    event.put("endDate", concurrentSession.getString("endDate"));
+                    event.put("title", concurrentSession.getString("title"));
+                    event.put("evaluationURL", concurrentSession.getString("evaluationURL"));
+                    event.put("concurrentSessionId", sessionTimeIndex);
+                    event.put("day", dayIndex);
+                    eventsArray.put(event);
+                }
+            }
+        }
+
+        return eventsArray;
+    }
+
+    private void writeJsonToFile(JSONArray eventsArray) {
+        // directly saves the response JSON into the android directory without parsing
+        try {
+            Writer output = null;
+            File file = new File(getFilesDir(), agendaFileName);
+            output = new BufferedWriter(new FileWriter(file));
+            output.write(eventsArray.toString());
+            output.close();
+            Toast.makeText(getApplicationContext(), "Composition saved", Toast.LENGTH_LONG).show();
+            Log.i(TAG, "Json imported to file: " + eventsArray.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void readJsonFromFile(String fileName) {
+        // retrieves a file from the android directory as a string and prints it in the log
+        StringBuffer datax = new StringBuffer("");
+        try {
+            FileInputStream fIn = openFileInput ( fileName ) ;
+            InputStreamReader isr = new InputStreamReader( fIn ) ;
+            BufferedReader buffreader = new BufferedReader( isr ) ;
+
+            String readString = buffreader.readLine ( ) ;
+            while ( readString != null ) {
+                datax.append(readString);
+                readString = buffreader.readLine ( ) ;
+            }
+
+            isr.close ( ) ;
+        } catch ( IOException ioe ) {
+            ioe.printStackTrace ( ) ;
+        }
+        String answer = datax.toString();
+        Log.i("jsonnnnnn", answer);
+    }
+
+    private void getDynamicJSONArray() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, agendaURL, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // PARSING; iterates through the layers of arrays and objects in the JSON to the core of the events
+                        try {
+                            JSONArray eventsArray = parseAgenda(response);
+                            writeJsonToFile(eventsArray);
+                            readJsonFromFile(agendaFileName);
+                        } catch (JSONException error) {
+                            error.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        mRequestQueue.add(request);
     }
 
     @Override
