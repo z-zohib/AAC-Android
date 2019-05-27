@@ -67,6 +67,27 @@ public class AgendaFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                SessionDetailsFragment sessiondetFrag = new SessionDetailsFragment();
+
+
+                Bundle args = new Bundle();
+                args.putString("Title", fridaySessions.get(position).getTitle());
+                args.putString("Start Date", fridaySessions.get(position).getStartDate());
+                args.putString("End Date", fridaySessions.get(position).getEndDate());
+                args.putString("Location", fridaySessions.get(position).getLocation());
+                args.putString("Description", fridaySessions.get(position).getDescription());
+                args.putString("Evaluation URL", fridaySessions.get(position).getEvaluationURL());
+                args.putInt("Concurrent ID", fridaySessions.get(position).getConcurrentSessionId());
+                args.putInt("Session ID", fridaySessions.get(position).getId());
+                args.putInt("Day", fridaySessions.get(position).getDay());
+
+
+                sessiondetFrag.setArguments(args);
+
+
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, sessiondetFrag).addToBackStack(null).commit();
+
+
             }
         });
 
@@ -100,7 +121,7 @@ public class AgendaFragment extends Fragment {
             if (position >= fridaySessions.size()) {
                 return view;
             }
-            textViewTime.setText("11:00-\n\n12:00");
+            textViewTime.setText(fridaySessions.get(position).getStartDate() + "\n\n" + fridaySessions.get(position).getEndDate());
             //TODO: if the getTitle() string is greater then 25 characters, then cut off string
             textViewTitle.setText(fridaySessions.get(position).getTitle());
             textViewDescription.setText(fridaySessions.get(position).getLocation());
