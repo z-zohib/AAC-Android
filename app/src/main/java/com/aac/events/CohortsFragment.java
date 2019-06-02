@@ -1,92 +1,254 @@
 package com.aac.events;
 
+import android.content.ClipData;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 public class CohortsFragment extends Fragment {
 
-    public CohortsFragment (){}
-
-
-
-    //private static String[] MOBILE_MODELS = {"iPhone 6","Nexus 6","Moto G","HTC One","Galaxy S5","Sony Xperia Z2","Lumia 830","Galaxy Grand 2"};
-
-    //int[] images = new int [] {R.drawable.aac_newsletter, R.drawable.aac_newsletter, R.drawable.aac_newsletter, R.drawable.aac_newsletter, R.drawable.aac_newsletter,R.drawable.aac_newsletter, R.drawable.aac_newsletter, R.drawable.aac_newsletter};
-
-    public static CohortsFragment newInstance() {
-        Bundle args = new Bundle();
-        CohortsFragment fragment = new CohortsFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View mainView = inflater.inflate(R.layout.cohorts, container, false);
+        View view = inflater.inflate(R.layout.cohorts, container, false);
 
-        //added
 
-        final String[] itemname = {
-                "Cohort1",
-                "Sara Noorzay",
-                "Sara Noorzay",
-                "Cohort 2",
-                "Sara Noorzay",
-                "Sara Noorzay",
-                "Cohort 3",
-                "Sara Noorzay",
-                "Sara Noorzay",
-                "Cohort 4",
-                "Sara Noorzay",
-                "Sara Noorzay",
-                "Cohort 5",
-                "Sara Noorzay",
-                "Sara Noorzay"
-        };
 
-        Integer[] imgid = {
-                R.drawable.whiteimg,
-                R.drawable.sara,
-                R.drawable.sara,
-                R.drawable.whiteimg,
-                R.drawable.sara,
-                R.drawable.sara,
-                R.drawable.whiteimg,
-                R.drawable.sara,
-                R.drawable.sara,
-                R.drawable.whiteimg,
-                R.drawable.sara,
-                R.drawable.sara,
-                R.drawable.whiteimg,
-                R.drawable.sara,
-                R.drawable.sara
-        };
-
-        CohortListAdapter adapter = new CohortListAdapter(getActivity(), itemname, imgid);
-        ListView listView = (ListView) mainView.findViewById(R.id.listView);
+        ListView listView = (ListView) view.findViewById(R.id.listView);
+        CustomAdapter adapter = new CustomAdapter();
         listView.setAdapter(adapter);
 
-        // listView.setAdapter(new ArrayAdapter<String>(getActivity(),R.layout.listview_activity,MOBILE_MODELS));
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        return view;
+    }
 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                // TODO Auto-generated method stub
-                String Slecteditem = itemname[+position];
-                Toast.makeText(getActivity(), Slecteditem, Toast.LENGTH_SHORT).show();
+
+    class CustomAdapter extends BaseAdapter {
+        @Override
+        public int getCount() {
+
+            int size = 75;
+
+            return size;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View view, ViewGroup viewGroup) {
+
+            final String[] cohort_list = {
+                    "Cohort 1",
+                    "Mena Tarin",
+                    "Easa Ahmadzai",
+                    "Cohort 2",
+                    "Nasira Rajabi",
+                    "Weiss Hamid",
+                    "Cohort 3",
+                    "Tarina Ayazi",
+                    "Sajad Ghanizada",
+                    "Cohort 4",
+                    "Mursal Noory",
+                    "Yosef Mahmood",
+                    "Cohort 5",
+                    "Omida Shahab",
+                    "Omed Amin",
+                    "Cohort 6",
+                    "Shabir Sarwary",
+                    "Heelai Ahmadullah",
+                    "Cohort 7",
+                    "Abrahim Hussain",
+                    "Salima Sekandari",
+                    "Cohort 8",
+                    "Mujtaba Shahsamand",
+                    "Neelab Naibkhyl",
+                    "Cohort 9",
+                    "Kane Dabir",
+                    "Arezo Mayel",
+                    "Cohort 10",
+                    "Morcel Hamidy",
+                    "Omeed Farani",
+                    "Cohort 11",
+                    "Darya Moini",
+                    "TBD",
+                    "Cohort 12",
+                    "Framerz Jaghori",
+                    "Tamana Noory",
+                    "Cohort 13",
+                    "Ebadullah Ebadi",
+                    "Nadia Ramin",
+                    "Cohort 14",
+                    "Ali Zekeria",
+                    "Mishal Pahrand",
+                    "Cohort 15",
+                    "Hamed Ahmadzai",
+                    "Mariam Mahbob",
+                    "Cohort 16",
+                    "Aziz Sadat",
+                    "Ariana Piloti",
+                    "Cohort 17",
+                    "Mouzima Mousumi",
+                    "Shahpour Ismail",
+                    "Cohort 18",
+                    "Rafiullah Hamedy",
+                    "Zareena Sultani",
+                    "Cohort 19",
+                    "Yoseph Raja",
+                    "Sabrina Nassir",
+                    "Cohort 20",
+                    "Hussai Nuristani",
+                    "Imron Saddozai",
+                    "Cohort 21",
+                    "TBD",
+                    "Rana Ahmadi",
+                    "Cohort 22",
+                    "Asseelah Azimi",
+                    "Suliman Razai",
+                    "Cohort 23",
+                    "Farishta Nawaby",
+                    "Kazemi Kazemi",
+                    "Cohort 24",
+                    "Wally Omar",
+                    "Daywa Ahmadi",
+                    "Cohort 25",
+                    "Habib Sahar",
+                    "Sayeda Akbary"
+            };
+
+
+
+
+
+            if (position % 3 == 0) {
+                view = getLayoutInflater().inflate(R.layout.cohort_sectionheader, null);
+                view.setBackgroundResource(R.color.lists);
+
+
+                TextView textViewCohortNumber = (TextView) view.findViewById(R.id.cohortheader);
+                textViewCohortNumber.setText(cohort_list[position]);
+
 
             }
-        });
 
-        return mainView;
+            else {
+
+                view = getLayoutInflater().inflate(R.layout.person_item, null);
+                view.setBackgroundResource(R.color.lists);
+
+                TextView txtTitle = (TextView) view.findViewById(R.id.item);
+                ImageView imageView = (ImageView) view.findViewById(R.id.icon);
+
+
+
+                Integer[] cohort_images = {
+                        R.drawable.no_image,
+                        R.drawable.mena_tarin,
+                        R.drawable.easa_ahmadzai,
+                        R.drawable.no_image,
+                        R.drawable.nasira_rajabi,
+                        R.drawable.weiss_hamid,
+                        R.drawable.no_image,
+                        R.drawable.tarina_ayazi,
+                        R.drawable.no_image,
+                        R.drawable.no_image,
+                        R.drawable.mursal_noory,
+                        R.drawable.yosef_mahmood,
+                        R.drawable.no_image,
+                        R.drawable.no_image,
+                        R.drawable.omed_amin,
+                        R.drawable.no_image,
+                        R.drawable.no_image,
+                        R.drawable.heelai_ahmadullah,
+                        R.drawable.no_image,
+                        R.drawable.no_image,
+                        R.drawable.salima_sekandari,
+                        R.drawable.no_image,
+                        R.drawable.no_image,
+                        R.drawable.no_image,
+                        R.drawable.no_image,
+                        R.drawable.kane_dabir,
+                        R.drawable.no_image,
+                        R.drawable.no_image,
+                        R.drawable.morcel_hamidy,
+                        R.drawable.omeed_farani,
+                        R.drawable.no_image,
+                        R.drawable.darya_moini,
+                        R.drawable.no_image,
+                        R.drawable.no_image,
+                        R.drawable.framerz_jaghori,
+                        R.drawable.tamana_noory,
+                        R.drawable.no_image,
+                        R.drawable.no_image,
+                        R.drawable.nadia_ramin,
+                        R.drawable.no_image,
+                        R.drawable.ali_zekeria,
+                        R.drawable.mishal_pahrand,
+                        R.drawable.no_image,
+                        R.drawable.hamed_ahmadzai,
+                        R.drawable.no_image,
+                        R.drawable.no_image,
+                        R.drawable.aziz_sadat,
+                        R.drawable.ariana_piloti,
+                        R.drawable.no_image,
+                        R.drawable.no_image,
+                        R.drawable.shahpour_ismail,
+                        R.drawable.no_image,
+                        R.drawable.rafiullah_hamedy,
+                        R.drawable.zareena_sultani,
+                        R.drawable.no_image,
+                        R.drawable.yoseph_raja,
+                        R.drawable.sabrina_nassir,
+                        R.drawable.no_image,
+                        R.drawable.hussai_nuristani,
+                        R.drawable.imron_saddozai,
+                        R.drawable.no_image,
+                        R.drawable.no_image,
+                        R.drawable.rana_ahmadi,
+                        R.drawable.no_image,
+                        R.drawable.asseelah_azimi,
+                        R.drawable.no_image,
+                        R.drawable.no_image,
+                        R.drawable.farishta_nawaby,
+                        R.drawable.no_image,
+                        R.drawable.no_image,
+                        R.drawable.wally_omar,
+                        R.drawable.daywa_ahmadi,
+                        R.drawable.no_image,
+                        R.drawable.habib_sahar,
+                        R.drawable.sayeda_akbary
+                };
+
+                txtTitle.setText(cohort_list[position]);
+                imageView.setImageResource(cohort_images[position]);
+
+
+
+            }
+
+
+
+            return view;
+        }
     }
 }
