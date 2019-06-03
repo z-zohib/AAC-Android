@@ -277,6 +277,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_information:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new InformationFragment()).commit();
                 break;
+            case R.id.nav_confeval:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ConferenceEvalFragment()).commit();
+                break;
             case R.id.nav_newsletter:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsletterFragment()).commit();
                 break;

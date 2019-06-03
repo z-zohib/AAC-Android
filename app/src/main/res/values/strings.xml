@@ -84,6 +84,13 @@
         Newsletter
     </string>
 
+    <string name="conferenceeval_text">
+        Thank you for attending the 2019 Afghan American Conference!\n\nPlease take a few moments to share your thoughts about AAC 2019 at the end of the conference. Your feedback is very valuable to us!\n\nPlease note: The evaluation URL will be made available on the last day of the conference.
+    </string>
+    <string name="title_conferenceeval">
+        Conference Evaluation
+    </string>
+
     <string name="title_activity_splash__screen">Splash_Screen</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
