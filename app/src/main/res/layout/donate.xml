@@ -40,7 +40,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/donate_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,54 +53,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/donate_text1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autoLink="web"
-                android:clickable="true"
-                android:fontFamily="@font/nunito"
-                android:paddingTop="10dp"
-                android:paddingBottom="15dp"
-                android:text="@string/text1_donate"
-                android:textColorLink="#FF3F53D1"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/donate_text2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autoLink="web"
-                android:clickable="true"
-                android:fontFamily="@font/nunito"
-                android:paddingBottom="15dp"
-                android:text="@string/text2_donate"
-                android:textColorLink="#FF3F53D1"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/donate_title1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nunito"
-                android:paddingBottom="15dp"
-                android:text="@string/title1_donate"
-                android:textColorLink="#FF3F53D1"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/donate_text3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autoLink="web"
-                android:clickable="true"
-                android:fontFamily="@font/nunito"
-                android:paddingBottom="15dp"
-                android:text="@string/text3_donate"
-                android:textColorLink="#FF3F53D1"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/donate_text4"
+                android:id="@+id/donate_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autoLink="web"
@@ -108,10 +61,31 @@
                 android:focusable="auto"
                 android:fontFamily="@font/nunito"
                 android:paddingBottom="10dp"
-                android:text="@string/text4_donate"
+                android:text="@string/donate_text"
                 android:textColorLink="#FF3F53D1"
                 android:textSize="16sp" />
+
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/donate_button"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:autoLink="web"
+        android:background="#000000"
+        android:fontFamily="@font/nunito"
+        android:text="Donate"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/donate"
+        app:layout_constraintStart_toStartOf="@id/donate"
+        app:layout_constraintTop_toBottomOf="@id/donate" />
 
 </android.support.constraint.ConstraintLayout>
