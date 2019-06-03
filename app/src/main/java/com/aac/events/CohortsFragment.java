@@ -60,7 +60,7 @@ public class CohortsFragment extends Fragment {
 
             final String[] cohort_list = {
                     "Cohort 1",
-                    "Mena Tarin",
+                    "TBD",
                     "Easa Ahmadzai",
                     "Cohort 2",
                     "Nasira Rajabi",
@@ -163,7 +163,7 @@ public class CohortsFragment extends Fragment {
 
                 Integer[] cohort_images = {
                         R.drawable.no_image,
-                        R.drawable.mena_tarin,
+                        R.drawable.no_image,
                         R.drawable.easa_ahmadzai,
                         R.drawable.no_image,
                         R.drawable.nasira_rajabi,
