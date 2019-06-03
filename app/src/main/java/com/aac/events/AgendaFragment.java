@@ -59,6 +59,7 @@ public class AgendaFragment extends Fragment {
             e.printStackTrace();
         }
 
+        // onclick listener that opens up a fragment that populates data dynamically
         ListView listView = (ListView) view.findViewById(R.id.friday_list);
         CustomAdapter customAdapter = new CustomAdapter();
         listView.setAdapter(customAdapter);
@@ -133,7 +134,7 @@ public class AgendaFragment extends Fragment {
     private String getAgendaJsonStr() {
         StringBuffer datax = new StringBuffer("");
         try {
-            FileInputStream fIn = getContext().openFileInput( agendaFileName ) ;
+            FileInputStream fIn = getContext().openFileInput( agendaFileName );
             InputStreamReader isr = new InputStreamReader( fIn ) ;
             BufferedReader buffreader = new BufferedReader( isr ) ;
 

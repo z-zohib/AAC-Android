@@ -19,17 +19,11 @@ public class SessionDetailsFragment extends Fragment {
         View view = inflater.inflate(R.layout.sessiondetails, container,false);
 
         Bundle args = this.getArguments();
-
-
-
-
-
         TextView textViewTitle = (TextView) view.findViewById(R.id.title_session);
         TextView textViewDescription = (TextView) view.findViewById(R.id.session_desc);
         TextView textViewTime = (TextView) view.findViewById(R.id.session_time);
         TextView textViewDate = (TextView) view.findViewById(R.id.session_date);
         TextView textViewLocation = (TextView) view.findViewById(R.id.session_location);
-
 
         String title = getArguments().getString("Title");
         String description = getArguments().getString("Description");
@@ -40,9 +34,6 @@ public class SessionDetailsFragment extends Fragment {
         Integer sessionID = getArguments().getInt("Evaluation URL");
         Integer concurrentID = getArguments().getInt("Concurrent ID");
         Integer day = getArguments().getInt("Day");
-
-
-
 
         textViewTime.setText(startTime + " - " + endTime);
         textViewTitle.setText(title);
