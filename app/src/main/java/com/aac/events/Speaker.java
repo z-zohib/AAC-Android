@@ -1,23 +1,25 @@
+package com.aac.events;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Speakers {
+public class Speaker {
     private int id;
+    private String speakerTitle;
     private String imageURL;
     private String imageName;
     private String name;
     private String description;
     private String sessionIDs;
-    private String speakerTitle;
 
-    public Speakers(JSONObject event) throws JSONException {
-        this.id = event.getInt("id");
-        this.imageURL = event.getString("imageURL");
-        this.imageName = event.getString("imageName");
-        this.name = event.getString("name");
-        this.description = event.getString("personDescription");
-        this.sessionIDs = event.getString("sessionIDs");
-        this.speakerTitle = event.getString("peopleTitle");
+    public Speaker(JSONObject speaker) throws JSONException {
+        this.id = speaker.getInt("id");
+        this.imageURL = speaker.getString("imageURL");
+        this.imageName = speaker.getString("imageName");
+        this.name = speaker.getString("name");
+        this.description = speaker.getString("personDescription");
+        this.sessionIDs = speaker.getString("sessionIDs");
+        this.speakerTitle = speaker.getString("peopleTitle");
     }
 
     public int getId() {

@@ -80,18 +80,11 @@ public class AgendaFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 SessionDetailsFragment sessiondetFrag = new SessionDetailsFragment();
-
 
                 Bundle args = new Bundle();
 
-
-
-                if (title == "First time" || title == "FRIDAY SESSIONS"){
-
-
-
+                if (title == "First time" || title == "FRIDAY SESSIONS") {
                     args.putString("Title", fridaySessions.get(position).getTitle());
                     args.putString("Start Date", fridaySessions.get(position).getStartDate());
                     args.putString("End Date", fridaySessions.get(position).getEndDate());
@@ -101,12 +94,7 @@ public class AgendaFragment extends Fragment {
                     args.putInt("Concurrent ID", fridaySessions.get(position).getConcurrentSessionId());
                     args.putInt("Session ID", fridaySessions.get(position).getId());
                     args.putInt("Day", fridaySessions.get(position).getDay());
-                }
-                else if (title == "SATURDAY SESSIONS"){
-
-
-
-
+                } else if (title == "SATURDAY SESSIONS") {
                     args.putString("Title", saturdaySessions.get(position).getTitle());
                     args.putString("Start Date", saturdaySessions.get(position).getStartDate());
                     args.putString("End Date", saturdaySessions.get(position).getEndDate());
@@ -116,15 +104,7 @@ public class AgendaFragment extends Fragment {
                     args.putInt("Concurrent ID", saturdaySessions.get(position).getConcurrentSessionId());
                     args.putInt("Session ID", saturdaySessions.get(position).getId());
                     args.putInt("Day", saturdaySessions.get(position).getDay());
-
-
-
-                }
-                else if (title == "Sunday SESSIONS"){
-
-
-
-
+                } else if (title == "Sunday SESSIONS"){
                     args.putString("Title", sundaySessions.get(position).getTitle());
                     args.putString("Start Date", sundaySessions.get(position).getStartDate());
                     args.putString("End Date", sundaySessions.get(position).getEndDate());
@@ -134,17 +114,10 @@ public class AgendaFragment extends Fragment {
                     args.putInt("Concurrent ID", sundaySessions.get(position).getConcurrentSessionId());
                     args.putInt("Session ID", sundaySessions.get(position).getId());
                     args.putInt("Day", sundaySessions.get(position).getDay());
-
-
                 }
 
-
                 sessiondetFrag.setArguments(args);
-
-
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, sessiondetFrag).addToBackStack(null).commit();
-
-
             }
         });
 
