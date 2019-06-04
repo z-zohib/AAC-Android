@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/black"
-        android:src="@drawable/about"
+        android:src="@drawable/profiles"
         app:layout_constraintBottom_toTopOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
         android:layout_marginRight="8dp"
         android:fontFamily="@font/droid_serif"
         android:gravity="center"
-        android:text="Sara Noorzay"
+        android:text="Name"
         android:textColor="@android:color/white"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/personimage"
@@ -45,7 +45,7 @@
         android:layout_marginBottom="5dp"
         android:fontFamily="@font/droid_serif"
         android:gravity="center"
-        android:text="Keynote Speaker"
+        android:text="Role"
         android:textColor="#C9FFFFFF"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@id/personimage"
@@ -66,8 +66,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline"
-        app:layout_constraintBottom_toBottomOf="@id/guideline"
-        app:srcCompat="@drawable/sara"/>
+        app:layout_constraintBottom_toBottomOf="@id/guideline"/>
 
     <ScrollView
         android:id="@+id/speakerdetails"
@@ -93,12 +92,13 @@
                 android:id="@+id/person_bio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autoLink="web"
+                android:autoLink="web|phone|email"
                 android:clickable="true"
                 android:focusable="auto"
                 android:fontFamily="@font/nunito"
                 android:paddingBottom="10dp"
                 android:text='"This is a sample biography of a speaker at AAC. This is a sample biography of a speaker at AAC. This is a sample biography of a speaker at AAC. This is a sample biography of a speaker at AAC. This is a sample biography of a speaker at AAC. This is a sample biography of a speaker at AAC. This is a sample biography of a speaker at AAC. This is a sample biography of a speaker at AAC. This is a sample biography of a speaker at AAC. This is a sample biography of a speaker at AAC."'
+                android:textColorLink="#FF3F53D1"
                 android:textSize="16sp" />
 
             <ListView

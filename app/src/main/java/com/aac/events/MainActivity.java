@@ -316,7 +316,7 @@ public class MainActivity extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DonateFragment()).commit();
                 break;
             case R.id.nav_agenda:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AgendaFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AgendaHostFragment()).commit();
                 break;
             case R.id.nav_norms:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NormsFragment()).commit();
@@ -335,6 +335,12 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_aaconnect:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AaconectFragment()).commit();
+                break;
+            case R.id.nav_information:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new InformationFragment()).commit();
+                break;
+            case R.id.nav_confeval:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ConferenceEvalFragment()).commit();
                 break;
             case R.id.nav_newsletter:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsletterFragment()).commit();

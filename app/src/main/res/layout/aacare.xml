@@ -16,31 +16,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/about"
+            android:src="@drawable/aacare"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/about"
-            tools:srcCompat="@drawable/about" />
-
+            tools:src="@drawable/aacare"
+            tools:srcCompat="@drawable/aacare" />
 
         <TextView
             android:id="@+id/title_aacare"
-            android:layout_width="327dp"
-            android:layout_height="49dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/droid_serif"
             android:text="@string/title_aacare"
             android:textColor="@android:color/white"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/aacare"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ScrollView
@@ -74,6 +66,7 @@
                     android:fontFamily="@font/nunito"
                     android:paddingBottom="10dp"
                     android:text="@string/aacare_text"
+                    android:textColorLink="#FF3F53D1"
                     android:textSize="16sp" />
 
             </LinearLayout>
