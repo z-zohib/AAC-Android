@@ -20,6 +20,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import static com.aac.events.MainActivity.agendaFileName;
+import static com.aac.events.MainActivity.speakersFileName;
 
 public class SpeakersFragment extends Fragment {
     private static View summaryView;
@@ -37,6 +38,8 @@ public class SpeakersFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mTabHost = new FragmentTabHost(getActivity());
         mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.fragment1);
+
+        speakersArr = getSpeakersJsonArr();
 
         // initializing speakers Array
         try {
@@ -73,10 +76,10 @@ public class SpeakersFragment extends Fragment {
         return mTabHost;
     }
 
-    private String getAgendaJsonStr() {
+    private String getSpeakersJsonStr() {
         StringBuffer datax = new StringBuffer("");
         try {
-            FileInputStream fIn = getContext().openFileInput( agendaFileName );
+            FileInputStream fIn = getContext().openFileInput( speakersFileName );
             InputStreamReader isr = new InputStreamReader( fIn ) ;
             BufferedReader buffreader = new BufferedReader( isr ) ;
 
@@ -93,15 +96,15 @@ public class SpeakersFragment extends Fragment {
         return datax.toString();
     }
 
-    private JSONArray getAgendaJsonArr() {
-        JSONArray events = null;
+    private JSONArray getSpeakersJsonArr() {
+        JSONArray speakers = null;
 
         try {
-            events = (new JSONArray(getAgendaJsonStr()));
+            speakers = (new JSONArray(getSpeakersJsonStr()));
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return events;
+        return speakers;
     }
 
     @Override
