@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/title_persondetails"
+        android:id="@+id/person_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -47,10 +47,10 @@
         android:gravity="center"
         android:text="Role"
         android:textColor="#C9FFFFFF"
-        android:textSize="16sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@id/personimage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_persondetails" />
+        app:layout_constraintTop_toBottomOf="@+id/person_name" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"

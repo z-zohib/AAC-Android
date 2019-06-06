@@ -22,6 +22,7 @@ public class SessionDetailsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.sessiondetails, container,false);
+        view.setBackgroundResource(R.color.lists);
 
         Bundle args = this.getArguments();
         TextView textViewTitle = (TextView) view.findViewById(R.id.title_session);

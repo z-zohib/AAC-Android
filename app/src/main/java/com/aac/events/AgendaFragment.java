@@ -49,6 +49,8 @@ public class AgendaFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //return inflater.inflate(R.layout.norms, container, false);
         View view = inflater.inflate(R.layout.agenda, container, false);
+        view.setBackgroundResource(R.color.lists);
+
         Bundle args = this.getArguments();
         title = getArguments().getString("Sessions");
         eventsArr = getAgendaJsonArr();
@@ -122,6 +124,38 @@ public class AgendaFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        fridaySessions = new ArrayList<Event>();
+        saturdaySessions = new ArrayList<Event>();
+        sundaySessions = new ArrayList<Event>();
+
+        Bundle args = this.getArguments();
+        title = getArguments().getString("Sessions");
+        eventsArr = getAgendaJsonArr();
+        try {
+            for (int i = 0; i < eventsArr.length(); i++) {
+                JSONObject event = eventsArr.getJSONObject(i);
+
+                // initializing sessionArrays
+                if (event.getInt("day") == 0) {
+                    fridaySessions.add(new Event(event));
+                } else if (event.getInt("day") == 1) {
+                    saturdaySessions.add(new Event(event));
+                } else if (event.getInt("day") == 2) {
+                    sundaySessions.add(new Event(event));
+                } else {
+                    Log.i(TAG, "Event Day initialized and categorized incorrectly");
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
     class CustomAdapter extends BaseAdapter {

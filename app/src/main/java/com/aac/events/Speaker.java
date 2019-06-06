@@ -5,7 +5,7 @@ import org.json.JSONObject;
 
 public class Speaker {
     private int id;
-    private String speakerTitle;
+    private String peopleTitle;
     private String imageURL;
     private String imageName;
     private String name;
@@ -19,7 +19,7 @@ public class Speaker {
         this.name = speaker.getString("name");
         this.description = speaker.getString("personDescription");
         this.sessionIDs = speaker.getString("sessionIDs");
-        this.speakerTitle = speaker.getString("peopleTitle");
+        this.peopleTitle = speaker.getString("peopleTitle");
     }
 
     public int getId() {
@@ -46,8 +46,8 @@ public class Speaker {
         return sessionIDs;
     }
 
-    public String getSpeakerTitle() {
-        return speakerTitle;
+    public String getPeopleTitle() {
+        return peopleTitle;
     }
 
 }
