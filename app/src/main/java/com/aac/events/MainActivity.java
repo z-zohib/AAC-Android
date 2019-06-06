@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity
     private StringRequest stringRequest;
 
     private static final String TAG = MainActivity.class.getName();
-    protected final static String agendaURL = "https://dl.dropboxusercontent.com/s/piavrsxzyp929lr/AgendaData.json?dl=0";
-    protected final static String speakersURL = "https://dl.dropboxusercontent.com/s/wu5ivui6ws6chtw/PeopleList.json?dl=0";
+    protected final static String agendaURL = "https://dl.dropboxusercontent.com/s/24ria513yvg47sb/AgendaData.json?dl=0";
+    protected final static String speakersURL = "https://dl.dropboxusercontent.com/s/amz7xnk0puf26k4/PeopleList.json?dl=0";
     protected final static String agendaFileName = "agendaData.json";
     protected final static String speakersFileName = "speakersData.json";
 
@@ -79,10 +79,10 @@ public class MainActivity extends AppCompatActivity
         }
 
         // OneSignal Initialization
-        OneSignal.startInit(this)
-                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-                .unsubscribeWhenNotificationsAreDisabled(true)
-                .init();
+        //OneSignal.startInit(this)
+               // .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+               // .unsubscribeWhenNotificationsAreDisabled(true)
+               // .init();
     }
 
     private void getDynamicJSONData() {
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity
                 JSONObject speaker = pplArray.getJSONObject(pplArrayIndex);
 
                 newSpeaker.put("id", speakerID++);
-                newSpeaker.put("speakerTitle", speakerTitle);
+                newSpeaker.put("peopleTitle", speakerTitle);
                 newSpeaker.put("imageURL", speaker.getString("imageURL"));
                 newSpeaker.put("imageName", speaker.getString("imageName"));
                 newSpeaker.put("name", speaker.getString("name"));
@@ -322,7 +322,7 @@ public class MainActivity extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NormsFragment()).commit();
                 break;
             case R.id.nav_speakers:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SpeakersFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SpeakersHostFragment()).commit();
                 break;
             case R.id.nav_cohorts:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CohortsFragment()).commit();
