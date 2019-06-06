@@ -2,10 +2,7 @@ package com.aac.events;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.onesignal.OneSignal;
 
@@ -48,10 +46,9 @@ public class MainActivity extends AppCompatActivity
 
     private static final String TAG = MainActivity.class.getName();
     protected final static String agendaURL = "https://dl.dropboxusercontent.com/s/piavrsxzyp929lr/AgendaData.json?dl=0";
-    protected final static String cohortsURL = "https://dl.dropboxusercontent.com/s/yoxo4gjgo4vpm26/CohortsData.json?dl=0";
-    protected final static String testURL = "https://api.myjson.com/bins/rc6p2";
+    protected final static String speakersURL = "https://dl.dropboxusercontent.com/s/wu5ivui6ws6chtw/PeopleList.json?dl=0";
     protected final static String agendaFileName = "agendaData.json";
-    protected final static String sponsorFileName = "sponsorData.json";
+    protected final static String speakersFileName = "speakersData.json";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +56,8 @@ public class MainActivity extends AppCompatActivity
 
         // setting up dynamic content through JSON retrieval
         mRequestQueue = Volley.newRequestQueue(this);
-        //getDynamicJSONData();
-        getDynamicJSONArray();
-        //testGetJSON();
+        getRequestSpeakers();
+        getRequestAgenda();
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -112,13 +108,11 @@ public class MainActivity extends AppCompatActivity
 
         // sessiondays length should be 3 (0 = fri, 1 = sat, 2 = sun)
         for (int dayIndex = 0; dayIndex < sessionDays.length(); dayIndex++) {
-            Log.i(TAG, "ENTERED: sessionDay: " + dayIndex);
             JSONObject sessionDay = sessionDays.getJSONObject(dayIndex);
             JSONArray sessions = sessionDay.getJSONArray("sessions");
 
             // sessions length is number of time slots (0 = 12pm-1:15pm, 1 = 1:30pm-3pm, etc...)
             for (int sessionTimeIndex = 0; sessionTimeIndex < sessions.length(); sessionTimeIndex++) {
-                Log.i(TAG, "SESSIONDAY: " + sessionTimeIndex + " session: " + sessionTimeIndex);
                 JSONObject session = sessions.getJSONObject(sessionTimeIndex);
                 JSONArray concurrentSessions = session.getJSONArray("concurrentSessions");
 
@@ -143,7 +137,38 @@ public class MainActivity extends AppCompatActivity
         return eventsArray;
     }
 
-    private void writeJsonToFile(JSONArray eventsArray) {
+    private JSONArray parseSpeakers(JSONArray response) throws JSONException {
+        JSONArray speakersArray = new JSONArray();
+        int speakerID = 0;
+
+        // should be 4 tabs within response length
+        for (int tabIndex = 0; tabIndex < response.length(); tabIndex++) {
+            Log.i(TAG, "ENTERED: tabs: " + tabIndex);
+            JSONObject tab = response.getJSONObject(tabIndex);
+            String speakerTitle = tab.getString("peopleTitle");
+            JSONArray pplArray = tab.getJSONArray("peopleArray");
+
+            for (int pplArrayIndex = 0; pplArrayIndex < pplArray.length(); pplArrayIndex++) {
+                Log.i(TAG, "speaker: " + pplArrayIndex);
+                JSONObject newSpeaker = new JSONObject();
+                JSONObject speaker = pplArray.getJSONObject(pplArrayIndex);
+
+                newSpeaker.put("id", speakerID++);
+                newSpeaker.put("speakerTitle", speakerTitle);
+                newSpeaker.put("imageURL", speaker.getString("imageURL"));
+                newSpeaker.put("imageName", speaker.getString("imageName"));
+                newSpeaker.put("name", speaker.getString("name"));
+                newSpeaker.put("personDescription", speaker.getString("personDescription"));
+                newSpeaker.put("sessionIDs", speaker.getJSONArray("sessionIDs"));
+
+                speakersArray.put(newSpeaker);
+            }
+        }
+
+        return speakersArray;
+    }
+
+    private void writeAgendaToFile(JSONArray eventsArray) {
         // directly saves the response JSON into the android directory without parsing
         try {
             Writer output = null;
@@ -151,8 +176,23 @@ public class MainActivity extends AppCompatActivity
             output = new BufferedWriter(new FileWriter(file));
             output.write(eventsArray.toString());
             output.close();
-            Toast.makeText(getApplicationContext(), "Composition saved", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Agenda loaded", Toast.LENGTH_LONG).show();
             Log.i(TAG, "Json imported to file: " + eventsArray.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void writeSpeakersToFile(JSONArray speakersArray) {
+        // directly saves the response JSON into the android directory without parsing
+        try {
+            Writer output = null;
+            File file = new File(getFilesDir(), speakersFileName);
+            output = new BufferedWriter(new FileWriter(file));
+            output.write(speakersArray.toString());
+            output.close();
+            Toast.makeText(getApplicationContext(), "Speakers loaded", Toast.LENGTH_LONG).show();
+            Log.i(TAG, "Json imported to file: " + speakersArray.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -180,7 +220,7 @@ public class MainActivity extends AppCompatActivity
         Log.i("jsonnnnnn", answer);
     }
 
-    private void getDynamicJSONArray() {
+    private void getRequestAgenda() {
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, agendaURL, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -188,8 +228,30 @@ public class MainActivity extends AppCompatActivity
                         // PARSING; iterates through the layers of arrays and objects in the JSON to the core of the events
                         try {
                             JSONArray eventsArray = parseAgenda(response);
-                            writeJsonToFile(eventsArray);
+                            writeAgendaToFile(eventsArray);
                             readJsonFromFile(agendaFileName);
+                        } catch (JSONException error) {
+                            error.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        mRequestQueue.add(request);
+    }
+
+    private void getRequestSpeakers() {
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, speakersURL, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        // PARSING; iterates through the layers of arrays and objects in the JSON to the core of the events
+                        try {
+                            writeSpeakersToFile((JSONArray) parseSpeakers(response));
                         } catch (JSONException error) {
                             error.printStackTrace();
                         }
