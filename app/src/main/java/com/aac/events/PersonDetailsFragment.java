@@ -13,7 +13,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-
+import org.json.JSONArray;
+import org.json.JSONException;
 
 
 public class PersonDetailsFragment extends Fragment {
@@ -37,7 +38,7 @@ public class PersonDetailsFragment extends Fragment {
         String imageName = getArguments().getString("Image Name");
         String personName = getArguments().getString("Person Name");
         String personBio = getArguments().getString("Person Description");
-        String sessionID = getArguments().getString("Session IDs");
+        String sids = getArguments().getString("Session IDs");
         String personTitle = getArguments().getString("Title");
 
         if (!imageName.isEmpty()){
@@ -54,7 +55,16 @@ public class PersonDetailsFragment extends Fragment {
         textViewPersonTitle.setText(personTitle);
         textViewPersonBio.setText(personBio);
 
+        JSONArray sessionIDs;
+        try {
+            sessionIDs = new JSONArray(sids);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
+        for (int i = 0; i < sessionIDs.length(); i++) {
+
+        }
 
         return view;
 

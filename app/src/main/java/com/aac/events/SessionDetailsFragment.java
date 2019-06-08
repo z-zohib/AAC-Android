@@ -62,7 +62,7 @@ public class SessionDetailsFragment extends Fragment {
         textViewLocation.setText(location);
         textViewDate.setText(month_day);
 
-        if (!evalURL.isEmpty()){
+        if (!evalURL.isEmpty()) {
             Button buttonSessionEval = (Button) view.findViewById(R.id.session_eval);
             buttonSessionEval.setVisibility(View.VISIBLE);
             buttonSessionEval.setOnClickListener(new OnClickListener() {
@@ -77,6 +77,10 @@ public class SessionDetailsFragment extends Fragment {
 
                 }
             });
+        }
+
+        for () {
+
         }
 
 

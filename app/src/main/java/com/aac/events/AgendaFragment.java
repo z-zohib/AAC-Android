@@ -27,6 +27,7 @@ import java.time.ZoneOffset;
 import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 
 import static com.aac.events.MainActivity.agendaFileName;
@@ -38,6 +39,8 @@ public class AgendaFragment extends Fragment {
     protected ArrayList<Event> fridaySessions = new ArrayList<>();
     protected ArrayList<Event> saturdaySessions = new ArrayList<>();
     protected ArrayList<Event> sundaySessions = new ArrayList<>();
+
+    protected HashMap<Integer, Event> sessionsMap = new HashMap<>();
 
     public String title;
 
@@ -68,6 +71,7 @@ public class AgendaFragment extends Fragment {
                 } else {
                     Log.i(TAG, "Event Day initialized and categorized incorrectly");
                 }
+                sessionsMap.put(event.getInt("id"), new Event(event));
             }
         } catch (JSONException e) {
             e.printStackTrace();
