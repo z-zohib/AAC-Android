@@ -1,7 +1,12 @@
 package com.aac.events;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Speaker {
     private int id;
@@ -10,7 +15,7 @@ public class Speaker {
     private String imageName;
     private String name;
     private String description;
-    private String sessionIDs;
+    private JSONArray sessionIDs;
 
     public Speaker(JSONObject speaker) throws JSONException {
         this.id = speaker.getInt("id");
@@ -18,7 +23,7 @@ public class Speaker {
         this.imageName = speaker.getString("imageName");
         this.name = speaker.getString("name");
         this.description = speaker.getString("personDescription");
-        this.sessionIDs = speaker.getString("sessionIDs");
+        this.sessionIDs = speaker.getJSONArray("sessionIDs");
         this.peopleTitle = speaker.getString("peopleTitle");
     }
 
@@ -42,8 +47,17 @@ public class Speaker {
         return description;
     }
 
-    public String getSessionIDs() {
-        return sessionIDs;
+    public ArrayList<Integer> getSessionIDs() {
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 0; i < sessionIDs.length(); i++) {
+            try {
+                list.add(Integer.parseInt(sessionIDs.getString(i)));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return list;
     }
 
     public String getPeopleTitle() {

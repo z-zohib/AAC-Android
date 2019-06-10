@@ -106,24 +106,46 @@ public class SpeakersFragment extends Fragment {
                     args.putString("Image Name", keynoteArray.get(position).getImageName());
                     args.putString("Person Name", keynoteArray.get(position).getName());
                     args.putString("Person Description", keynoteArray.get(position).getDescription());
-                    args.putString("Session IDs", keynoteArray.get(position).getSessionIDs());
+                    //args.putIntArray("Session IDs", keynoteArray.get(position).getSessionIDs().toArray());
                     args.putString("Title", keynoteArray.get(position).getPeopleTitle());
+                    for (int i = 0; i < keynoteArray.get(position).getSessionIDs().size(); i++) {
+                        int sessionID = keynoteArray.get(position).getSessionIDs().get(i);
+                        args.putString("session" + i + "_title", sessionMap.get(sessionID).getTitle());
+                        args.putString("session" + i + "_description", sessionMap.get(sessionID).getDescription());
+                        args.putString("session" + i + "_startDate", sessionMap.get(sessionID).getStartDate());
+                        args.putString("session" + i + "_endDate", sessionMap.get(sessionID).getEndDate());
+                    }
+
                 } else if (title == "SEED") {
                     args.putInt("Person ID", seedArray.get(position).getId());
                     args.putString("Image URL", seedArray.get(position).getImageURL());
                     args.putString("Image Name", seedArray.get(position).getImageName());
                     args.putString("Person Name", seedArray.get(position).getName());
                     args.putString("Person Description", seedArray.get(position).getDescription());
-                    args.putString("Session IDs", seedArray.get(position).getSessionIDs());
+                    //args.putString("Session IDs", seedArray.get(position).getSessionIDs());
                     args.putString("Title", seedArray.get(position).getPeopleTitle());
+                    for (int i = 0; i < keynoteArray.get(position).getSessionIDs().size(); i++) {
+                        int sessionID = keynoteArray.get(position).getSessionIDs().get(i);
+                        args.putString("session" + i + "_title", sessionMap.get(sessionID).getTitle());
+                        args.putString("session" + i + "_description", sessionMap.get(sessionID).getDescription());
+                        args.putString("session" + i + "_startDate", sessionMap.get(sessionID).getStartDate());
+                        args.putString("session" + i + "_endDate", sessionMap.get(sessionID).getEndDate());
+                    }
                 } else if (title == "SPEAKERS"){
                     args.putInt("Person ID", facilitatorArray.get(position).getId());
                     args.putString("Image URL", facilitatorArray.get(position).getImageURL());
                     args.putString("Image Name", facilitatorArray.get(position).getImageName());
                     args.putString("Person Name", facilitatorArray.get(position).getName());
                     args.putString("Person Description", facilitatorArray.get(position).getDescription());
-                    args.putString("Session IDs", facilitatorArray.get(position).getSessionIDs());
+                    //args.putString("Session IDs", facilitatorArray.get(position).getSessionIDs());
                     args.putString("Title", facilitatorArray.get(position).getPeopleTitle());
+                    for (int i = 0; i < keynoteArray.get(position).getSessionIDs().size(); i++) {
+                        int sessionID = keynoteArray.get(position).getSessionIDs().get(i);
+                        args.putString("session" + i + "_title", sessionMap.get(sessionID).getTitle());
+                        args.putString("session" + i + "_description", sessionMap.get(sessionID).getDescription());
+                        args.putString("session" + i + "_startDate", sessionMap.get(sessionID).getStartDate());
+                        args.putString("session" + i + "_endDate", sessionMap.get(sessionID).getEndDate());
+                    }
                 }
                 else if (title == "PERFORMERS"){
                     args.putInt("Person ID", performerArray.get(position).getId());
@@ -131,8 +153,15 @@ public class SpeakersFragment extends Fragment {
                     args.putString("Image Name", performerArray.get(position).getImageName());
                     args.putString("Person Name", performerArray.get(position).getName());
                     args.putString("Person Description", performerArray.get(position).getDescription());
-                    args.putString("Session IDs", performerArray.get(position).getSessionIDs());
+                    //args.putString("Session IDs", performerArray.get(position).getSessionIDs());
                     args.putString("Title", performerArray.get(position).getPeopleTitle());
+                    for (int i = 0; i < keynoteArray.get(position).getSessionIDs().size(); i++) {
+                        int sessionID = keynoteArray.get(position).getSessionIDs().get(i);
+                        args.putString("session" + i + "_title", sessionMap.get(sessionID).getTitle());
+                        args.putString("session" + i + "_description", sessionMap.get(sessionID).getDescription());
+                        args.putString("session" + i + "_startDate", sessionMap.get(sessionID).getStartDate());
+                        args.putString("session" + i + "_endDate", sessionMap.get(sessionID).getEndDate());
+                    }
                 }
 
                 persondetFrag.setArguments(args);
