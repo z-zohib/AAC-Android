@@ -23,21 +23,27 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import com.squareup.picasso.Picasso;
 
 
+import static com.aac.events.MainActivity.agendaFileName;
 import static com.aac.events.MainActivity.speakersFileName;
 
 public class SpeakersFragment extends Fragment {
     private static View summaryView;
     private FragmentTabHost mTabHost;
     private JSONArray speakersArr;
+    private JSONArray sessionArr;
     private static final String TAG = MainActivity.class.getName();
 
     protected ArrayList<Speaker> keynoteArray = new ArrayList<>();
     protected ArrayList<Speaker> seedArray = new ArrayList<>();
     protected ArrayList<Speaker> facilitatorArray = new ArrayList<>();
     protected ArrayList<Speaker> performerArray = new ArrayList<>();
+
+    protected HashMap<Integer, Event> sessionMap = new HashMap<>();
 
     public String title;
 
@@ -52,8 +58,8 @@ public class SpeakersFragment extends Fragment {
         Bundle args = this.getArguments();
         title = getArguments().getString("Speakers");
 
-
         speakersArr = getSpeakersJsonArr();
+        sessionArr = getAgendaJsonArr();
 
 
         // initializing speakers Array
@@ -61,9 +67,7 @@ public class SpeakersFragment extends Fragment {
             for (int i = 0; i < speakersArr.length(); i++) {
                 JSONObject speaker = speakersArr.getJSONObject(i);
 
-
                 // initializing peopleArrays
-
                 if (speaker.getString("peopleTitle").equalsIgnoreCase("Keynote Speaker")) {
                     keynoteArray.add(new Speaker(speaker));
                 } else if (speaker.getString("peopleTitle").equalsIgnoreCase("S.E.E.D. Talks")) {
@@ -75,6 +79,11 @@ public class SpeakersFragment extends Fragment {
                 } else {
                     Log.i(TAG, "Speakers initialized and categorized incorrectly");
                 }
+            }
+
+            for (int i = 0; i < sessionArr.length(); i++) {
+                Event session = new Event(sessionArr.getJSONObject(i));
+                sessionMap.put(session.getId(), session);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -295,10 +304,7 @@ public class SpeakersFragment extends Fragment {
                 else {
                     Picasso.get().load(performerArray.get(position).getImageURL()).into(imageViewPerson);
                 }
-
             }
-
-
 
             return view;
         }
@@ -337,5 +343,34 @@ public class SpeakersFragment extends Fragment {
         return speakers;
     }
 
+    private String getAgendaJsonStr() {
+        StringBuffer datax = new StringBuffer("");
+        try {
+            FileInputStream fIn = getContext().openFileInput( agendaFileName ) ;
+            InputStreamReader isr = new InputStreamReader( fIn ) ;
+            BufferedReader buffreader = new BufferedReader( isr ) ;
 
+            String readString = buffreader.readLine ( ) ;
+            while ( readString != null ) {
+                datax.append(readString);
+                readString = buffreader.readLine ( ) ;
+            }
+
+            isr.close ( ) ;
+        } catch ( IOException ioe ) {
+            ioe.printStackTrace ( ) ;
+        }
+        return datax.toString();
+    }
+
+    private JSONArray getAgendaJsonArr() {
+        JSONArray events = null;
+
+        try {
+            events = (new JSONArray(getAgendaJsonStr()));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return events;
+    }
 }

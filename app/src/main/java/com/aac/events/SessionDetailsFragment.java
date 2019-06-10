@@ -79,15 +79,7 @@ public class SessionDetailsFragment extends Fragment {
             });
         }
 
-        for () {
-
-        }
-
 
         return view;
-
-
-
-
     }
 }

@@ -41,8 +41,7 @@ public class PersonDetailsFragment extends Fragment {
         String sids = getArguments().getString("Session IDs");
         String personTitle = getArguments().getString("Title");
 
-        if (!imageName.isEmpty()){
-
+        if (!imageName.isEmpty()) {
             int person_image = getResources().getIdentifier(imageName, "drawable", getActivity().getPackageName());
             imageViewPerson.setImageResource(person_image);
 
@@ -58,19 +57,15 @@ public class PersonDetailsFragment extends Fragment {
         JSONArray sessionIDs;
         try {
             sessionIDs = new JSONArray(sids);
+
+            for (int i = 0; i < sessionIDs.length(); i++) {
+                Integer.parseInt(sessionIDs.getString(i));
+
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        for (int i = 0; i < sessionIDs.length(); i++) {
-
-        }
-
         return view;
-
-
     }
-
-
-
 }
