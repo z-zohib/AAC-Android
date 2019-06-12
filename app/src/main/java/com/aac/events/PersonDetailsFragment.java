@@ -26,27 +26,25 @@ public class PersonDetailsFragment extends Fragment {
         View view = inflater.inflate(R.layout.speakerdetails, container,false);
         view.setBackgroundResource(R.color.lists);
 
-        Bundle args = this.getArguments();
+        //Bundle args = this.getArguments();
         TextView textViewPersonName = (TextView) view.findViewById(R.id.person_name);
         TextView textViewPersonTitle = (TextView) view.findViewById(R.id.persontitle);
         TextView textViewPersonBio = (TextView) view.findViewById(R.id.person_bio);
         ImageView imageViewPerson = (ImageView) view.findViewById(R.id.personimage);
 
 
-        Integer personID = getArguments().getInt("Person ID");
+        //Integer personID = getArguments().getInt("Person ID");
         String imageURL = getArguments().getString("Image URL");
         String imageName = getArguments().getString("Image Name");
         String personName = getArguments().getString("Person Name");
         String personBio = getArguments().getString("Person Description");
-        String sids = getArguments().getString("Session IDs");
+        //String sids = getArguments().getString("Session IDs");
         String personTitle = getArguments().getString("Title");
 
         if (!imageName.isEmpty()) {
             int person_image = getResources().getIdentifier(imageName, "drawable", getActivity().getPackageName());
             imageViewPerson.setImageResource(person_image);
-
-        }
-        else {
+        } else {
             Picasso.get().load(imageURL).into(imageViewPerson);
         }
 
@@ -54,16 +52,13 @@ public class PersonDetailsFragment extends Fragment {
         textViewPersonTitle.setText(personTitle);
         textViewPersonBio.setText(personBio);
 
-        JSONArray sessionIDs;
-        try {
-            sessionIDs = new JSONArray(sids);
-
-            for (int i = 0; i < sessionIDs.length(); i++) {
-                Integer.parseInt(sessionIDs.getString(i));
-
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
+        int i = 0;
+        while (getArguments().getString("session" + i++ + "_title") != null) {
+            // TODO: initialize adapter and populate list with session info
+            String title = getArguments().getString("session" + i + "_title");
+            String description = getArguments().getString("session" + i + "_description");
+            String startDate = getArguments().getString("session" + i + "_startTime");
+            String endDate = getArguments().getString("session" + i + "_endDate");
         }
 
         return view;
