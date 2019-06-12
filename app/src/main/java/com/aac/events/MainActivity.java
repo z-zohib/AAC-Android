@@ -129,6 +129,7 @@ public class MainActivity extends AppCompatActivity
                     event.put("evaluationURL", concurrentSession.getString("evaluationURL"));
                     event.put("concurrentSessionId", sessionTimeIndex);
                     event.put("day", dayIndex);
+                    event.put("speakerIDs", concurrentSession.getJSONArray("speakerIDs"));
                     eventsArray.put(event);
                 }
             }
@@ -139,7 +140,6 @@ public class MainActivity extends AppCompatActivity
 
     private JSONArray parseSpeakers(JSONArray response) throws JSONException {
         JSONArray speakersArray = new JSONArray();
-        int speakerID = 0;
 
         // should be 4 tabs within response length
         for (int tabIndex = 0; tabIndex < response.length(); tabIndex++) {
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity
                 JSONObject newSpeaker = new JSONObject();
                 JSONObject speaker = pplArray.getJSONObject(pplArrayIndex);
 
-                newSpeaker.put("id", speakerID++);
+                newSpeaker.put("id", speaker.getInt("speakerID"));
                 newSpeaker.put("peopleTitle", speakerTitle);
                 newSpeaker.put("imageURL", speaker.getString("imageURL"));
                 newSpeaker.put("imageName", speaker.getString("imageName"));

@@ -102,7 +102,7 @@
                 android:textSize="16sp" />
 
             <ListView
-                android:id="@+id/listView"
+                android:id="@+id/speaker_det_sessionlist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#00FFFFFF"

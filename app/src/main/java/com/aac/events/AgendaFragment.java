@@ -27,17 +27,22 @@ import java.time.ZoneOffset;
 import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 
 import static com.aac.events.MainActivity.agendaFileName;
+import static com.aac.events.MainActivity.speakersFileName;
 
 public class AgendaFragment extends Fragment {
     private JSONArray eventsArr;
+    private JSONArray speakersArr;
     private static final String TAG = MainActivity.class.getName();
 
     protected ArrayList<Event> fridaySessions = new ArrayList<>();
     protected ArrayList<Event> saturdaySessions = new ArrayList<>();
     protected ArrayList<Event> sundaySessions = new ArrayList<>();
+
+    protected HashMap<Integer, Speaker> speakersMap = new HashMap<>();
 
     public String title;
 
@@ -54,6 +59,7 @@ public class AgendaFragment extends Fragment {
         Bundle args = this.getArguments();
         title = getArguments().getString("Sessions");
         eventsArr = getAgendaJsonArr();
+        speakersArr = getSpeakersJsonArr();
         try {
             for (int i = 0; i < eventsArr.length(); i++) {
                 JSONObject event = eventsArr.getJSONObject(i);
@@ -68,6 +74,11 @@ public class AgendaFragment extends Fragment {
                 } else {
                     Log.i(TAG, "Event Day initialized and categorized incorrectly");
                 }
+            }
+
+            for (int i = 0; i < speakersArr.length(); i++) {
+                Speaker speaker = new Speaker(speakersArr.getJSONObject(i));
+                speakersMap.put(speaker.getId(), speaker);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -313,6 +324,39 @@ public class AgendaFragment extends Fragment {
             e.printStackTrace();
         }
         return events;
+    }
+
+    private String getSpeakersJsonStr() {
+        StringBuffer datax = new StringBuffer("");
+        try {
+            FileInputStream fIn = getContext().openFileInput( speakersFileName );
+            InputStreamReader isr = new InputStreamReader( fIn ) ;
+            BufferedReader buffreader = new BufferedReader( isr ) ;
+
+            String readString = buffreader.readLine ( ) ;
+            while ( readString != null ) {
+                datax.append(readString);
+                readString = buffreader.readLine ( ) ;
+            }
+
+            isr.close ( ) ;
+        } catch ( IOException ioe ) {
+            ioe.printStackTrace ( ) ;
+        }
+        return datax.toString();
+    }
+
+    private JSONArray getSpeakersJsonArr() {
+        JSONArray speakers = null;
+
+        try {
+            speakers = (new JSONArray(getSpeakersJsonStr()));
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return speakers;
     }
 
 }
