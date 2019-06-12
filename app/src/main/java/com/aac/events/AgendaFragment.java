@@ -31,18 +31,15 @@ import java.util.HashMap;
 
 
 import static com.aac.events.MainActivity.agendaFileName;
-import static com.aac.events.MainActivity.speakersFileName;
 
 public class AgendaFragment extends Fragment {
     private JSONArray eventsArr;
-    private JSONArray speakersArr;
     private static final String TAG = MainActivity.class.getName();
 
     protected ArrayList<Event> fridaySessions = new ArrayList<>();
     protected ArrayList<Event> saturdaySessions = new ArrayList<>();
     protected ArrayList<Event> sundaySessions = new ArrayList<>();
 
-    protected HashMap<Integer, Speaker> speakersMap = new HashMap<>();
 
     public String title;
 
@@ -59,7 +56,6 @@ public class AgendaFragment extends Fragment {
         Bundle args = this.getArguments();
         title = getArguments().getString("Sessions");
         eventsArr = getAgendaJsonArr();
-        speakersArr = getSpeakersJsonArr();
         try {
             for (int i = 0; i < eventsArr.length(); i++) {
                 JSONObject event = eventsArr.getJSONObject(i);
@@ -76,20 +72,17 @@ public class AgendaFragment extends Fragment {
                 }
             }
 
-            for (int i = 0; i < speakersArr.length(); i++) {
-                Speaker speaker = new Speaker(speakersArr.getJSONObject(i));
-                speakersMap.put(speaker.getId(), speaker);
-            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         // onclick listener that opens up a fragment that populates data dynamically
-        //ListView listView = (ListView) view.findViewById(R.id.friday_list);
         ListView listView = (ListView) view.findViewById(R.id.session_list);
         CustomAdapter customAdapter = new CustomAdapter();
         listView.setAdapter(customAdapter);
 
+
+        //Navigate to Session Details
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -107,6 +100,7 @@ public class AgendaFragment extends Fragment {
                     args.putInt("Concurrent ID", fridaySessions.get(position).getConcurrentSessionId());
                     args.putInt("Session ID", fridaySessions.get(position).getId());
                     args.putInt("Day", fridaySessions.get(position).getDay());
+                    args.putString("Speaker ID", fridaySessions.get(position).getSpeakerIDs());
                 } else if (title == "SATURDAY SESSIONS") {
                     args.putString("Title", saturdaySessions.get(position).getTitle());
                     args.putString("Start Date", saturdaySessions.get(position).getStartDate());
@@ -117,6 +111,7 @@ public class AgendaFragment extends Fragment {
                     args.putInt("Concurrent ID", saturdaySessions.get(position).getConcurrentSessionId());
                     args.putInt("Session ID", saturdaySessions.get(position).getId());
                     args.putInt("Day", saturdaySessions.get(position).getDay());
+                    args.putString("Speaker ID", saturdaySessions.get(position).getSpeakerIDs());
                 } else if (title == "Sunday SESSIONS"){
                     args.putString("Title", sundaySessions.get(position).getTitle());
                     args.putString("Start Date", sundaySessions.get(position).getStartDate());
@@ -127,10 +122,11 @@ public class AgendaFragment extends Fragment {
                     args.putInt("Concurrent ID", sundaySessions.get(position).getConcurrentSessionId());
                     args.putInt("Session ID", sundaySessions.get(position).getId());
                     args.putInt("Day", sundaySessions.get(position).getDay());
+                    args.putString("Speaker ID", sundaySessions.get(position).getSpeakerIDs());
                 }
 
                 sessiondetFrag.setArguments(args);
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, sessiondetFrag).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(android.R.id.tabhost, sessiondetFrag).addToBackStack(null).commit();
             }
         });
 
@@ -326,37 +322,5 @@ public class AgendaFragment extends Fragment {
         return events;
     }
 
-    private String getSpeakersJsonStr() {
-        StringBuffer datax = new StringBuffer("");
-        try {
-            FileInputStream fIn = getContext().openFileInput( speakersFileName );
-            InputStreamReader isr = new InputStreamReader( fIn ) ;
-            BufferedReader buffreader = new BufferedReader( isr ) ;
-
-            String readString = buffreader.readLine ( ) ;
-            while ( readString != null ) {
-                datax.append(readString);
-                readString = buffreader.readLine ( ) ;
-            }
-
-            isr.close ( ) ;
-        } catch ( IOException ioe ) {
-            ioe.printStackTrace ( ) ;
-        }
-        return datax.toString();
-    }
-
-    private JSONArray getSpeakersJsonArr() {
-        JSONArray speakers = null;
-
-        try {
-            speakers = (new JSONArray(getSpeakersJsonStr()));
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return speakers;
-    }
 
 }

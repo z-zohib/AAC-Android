@@ -38,6 +38,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Writer;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -63,6 +66,11 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Adding menu icons to tool bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -80,9 +88,9 @@ public class MainActivity extends AppCompatActivity
 
         // OneSignal Initialization
         //OneSignal.startInit(this)
-               // .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-               // .unsubscribeWhenNotificationsAreDisabled(true)
-               // .init();
+        // .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+        // .unsubscribeWhenNotificationsAreDisabled(true)
+        // .init();
     }
 
     private void getDynamicJSONData() {
@@ -304,46 +312,46 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         switch (item.getItemId()) {
             case R.id.nav_about:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutFragment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_planning_team:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PlanningTeamFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PlanningTeamFragment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_faq:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FaqFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FaqFragment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_donate:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DonateFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DonateFragment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_agenda:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AgendaHostFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AgendaHostFragment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_norms:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NormsFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NormsFragment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_speakers:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SpeakersHostFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SpeakersHostFragment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_cohorts:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CohortsFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CohortsFragment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_aacare:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AacareFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AacareFragment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_sponsor:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SponsorFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SponsorFragment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_aaconnect:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AaconectFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AaconectFragment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_information:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new InformationFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new InformationFragment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_confeval:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ConferenceEvalFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ConferenceEvalFragment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_newsletter:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsletterFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsletterFragment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_contact_us:
                 Intent intent = new Intent(Intent.ACTION_SEND);
@@ -352,7 +360,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(Intent.createChooser(intent, ""));
                 break;
             case R.id.nav_credits:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CreditsFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CreditsFragment()).addToBackStack(null).commit();
                 break;
         }
 

@@ -8,8 +8,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
         android:background="@android:color/black"
         android:src="@drawable/profiles"
         app:layout_constraintBottom_toTopOf="@id/guideline"
@@ -97,23 +98,24 @@
                 android:focusable="auto"
                 android:fontFamily="@font/nunito"
                 android:paddingBottom="10dp"
-                android:text='"This is a sample biography of a speaker at AAC. This is a sample biography of a speaker at AAC. This is a sample biography of a speaker at AAC. This is a sample biography of a speaker at AAC. This is a sample biography of a speaker at AAC. This is a sample biography of a speaker at AAC. This is a sample biography of a speaker at AAC. This is a sample biography of a speaker at AAC. This is a sample biography of a speaker at AAC. This is a sample biography of a speaker at AAC."'
+                android:text='"Biography"'
                 android:textColorLink="#FF3F53D1"
                 android:textSize="16sp" />
 
             <ListView
-                android:id="@+id/speaker_det_sessionlist"
+                android:id="@+id/listView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#00FFFFFF"
                 android:cacheColorHint="#00FFFFFF"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/person_bio" />
+                app:layout_constraintTop_toBottomOf="@+id/speakerdetails" />
+
+
 
         </LinearLayout>
     </ScrollView>
+
+
 
 
 

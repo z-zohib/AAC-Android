@@ -13,6 +13,7 @@ public class Event {
     private String endDate;
     private String description;
     private String evaluationURL;
+    private String speakerIDs;
 
     public Event(JSONObject event) throws JSONException {
         this.id = event.getInt("id");
@@ -24,6 +25,7 @@ public class Event {
         this.endDate = event.getString("endDate");
         this.description = event.getString("description");
         this.evaluationURL = event.getString("evaluationURL");
+        this.speakerIDs = event.getString("speakerIDs");
     }
 
     public int getId() {
@@ -60,5 +62,9 @@ public class Event {
 
     public String getEvaluationURL() {
         return evaluationURL;
+    }
+
+    public String getSpeakerIDs() {
+        return speakerIDs;
     }
 }

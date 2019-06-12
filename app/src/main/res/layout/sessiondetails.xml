@@ -25,13 +25,13 @@
         android:fontFamily="@font/droid_serif"
         android:text="Session Title Goes Here"
         android:textColor="@android:color/white"
-        android:textSize="34sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@id/sessiondetails"
         app:layout_constraintTop_toTopOf="parent"
-        android:autoSizeTextType="uniform"
-        android:autoSizeMinTextSize="18sp"
-        android:autoSizeMaxTextSize="34sp"/>
+        android:autoSizeTextType= "uniform"
+        android:autoSizeMaxTextSize="34sp"
+        android:autoSizeMinTextSize="18sp"/>
 
     <TextView
         android:id="@+id/session_date"
@@ -77,7 +77,8 @@
         app:layout_constraintTop_toBottomOf="@id/session_time"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:text="+" />
+        android:text="+"
+        android:visibility="invisible"/>
 
     <View
         android:id="@+id/divider"
@@ -123,12 +124,12 @@
                 android:focusable="auto"
                 android:fontFamily="@font/nunito"
                 android:paddingBottom="10dp"
-                android:text="This is where session description goes. This is where session description goes. This is where session description goes. This is where session description goes. This is where session description goes. This is where session description goes. This is where session description goes. This is where session description goes. This is where session description goes. This is where session description goes. This is where session description goes. This is where session description goes. This is where session description goes. This is where session description goes. This is where session description goes. This is where session description goes. This is where session description goes. This is where session description goes. This is where session description goes. This is where session description goes."
+                android:text="Session Description"
                 android:textColorLink="#FF3F53D1"
                 android:textSize="16sp" />
 
             <ListView
-                android:id="@+id/sess_det_speakerlist"
+                android:id="@+id/listView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#00FFFFFF"
