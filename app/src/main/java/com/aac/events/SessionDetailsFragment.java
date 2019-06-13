@@ -168,7 +168,7 @@ public class SessionDetailsFragment extends Fragment {
                 persondetFrag.setArguments(args);
 
 
-                getFragmentManager().beginTransaction().replace(android.R.id.tabhost, persondetFrag).commit();
+                getFragmentManager().beginTransaction().replace(android.R.id.tabhost, persondetFrag).addToBackStack(null).commit();
 
             }
         });
@@ -177,6 +177,58 @@ public class SessionDetailsFragment extends Fragment {
 
         return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        JSONArray speakersArr;
+        sessionSpeakers = new ArrayList<Speaker>();
+        String speakID = getArguments().getString("Speaker ID");
+
+
+
+        Bundle args = this.getArguments();
+        //Pulling speakerIDs from agenda JSON and then looking for that ID in the people JSON and pushing it into a new array
+
+        speakersArr = getSpeakersJsonArr();
+        JSONArray speakerIDs;
+
+        try {
+            int session_speakerIDs;
+            speakerIDs = new JSONArray(speakID);
+            Log.d("SpeakerID", speakerIDs.toString());
+
+
+            for (int p = 0; p < speakerIDs.length(); p++) {
+                session_speakerIDs = Integer.parseInt(speakerIDs.getString(p));
+
+
+                try {
+
+                    for (int i = 0; i < speakersArr.length(); i++) {
+                        JSONObject speaker = speakersArr.getJSONObject(i);
+
+
+                        if (speaker.getInt("id") == session_speakerIDs){
+
+                            sessionSpeakers.add(new Speaker(speaker));
+                        }
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 
     class CustomAdapter extends BaseAdapter {
         @Override

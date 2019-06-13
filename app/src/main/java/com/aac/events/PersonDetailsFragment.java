@@ -150,6 +150,52 @@ public class PersonDetailsFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        JSONArray eventsArr;
+        speakerSessions = new ArrayList<Event>();
+
+
+        Bundle args = this.getArguments();
+        //Pulling sessionIDs from people JSON and then looking for that ID in the agenda JSON and pushing it into a new array
+        eventsArr = getAgendaJsonArr();
+        JSONArray sessionIDs;
+        String sids = getArguments().getString("Session IDs");
+
+        try {
+            int speaker_sessionIDs;
+            sessionIDs = new JSONArray(sids);
+
+            for (int p = 0; p < sessionIDs.length(); p++) {
+                speaker_sessionIDs = Integer.parseInt(sessionIDs.getString(p));
+
+
+                try {
+
+                    for (int i = 0; i < eventsArr.length(); i++) {
+                        JSONObject event = eventsArr.getJSONObject(i);
+
+                        if (event.getInt("id") == speaker_sessionIDs){
+
+                            speakerSessions.add(new Event(event));
+                        }
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 
 
     class CustomAdapter extends BaseAdapter {
