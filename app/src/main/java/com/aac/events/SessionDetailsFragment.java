@@ -164,9 +164,7 @@ public class SessionDetailsFragment extends Fragment {
                 args.putString("Session IDs", sessionSpeakers.get(position).getSessionIDs());
                 args.putString("Title", sessionSpeakers.get(position).getPeopleTitle());
 
-
                 persondetFrag.setArguments(args);
-
 
                 getFragmentManager().beginTransaction().replace(android.R.id.tabhost, persondetFrag).addToBackStack(null).commit();
 
@@ -185,8 +183,6 @@ public class SessionDetailsFragment extends Fragment {
         JSONArray speakersArr;
         sessionSpeakers = new ArrayList<Speaker>();
         String speakID = getArguments().getString("Speaker ID");
-
-
 
         Bundle args = this.getArguments();
         //Pulling speakerIDs from agenda JSON and then looking for that ID in the people JSON and pushing it into a new array

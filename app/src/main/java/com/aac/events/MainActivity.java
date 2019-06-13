@@ -52,6 +52,8 @@ public class MainActivity extends AppCompatActivity
     protected final static String speakersURL = "https://dl.dropboxusercontent.com/s/amz7xnk0puf26k4/PeopleList.json?dl=0";
     protected final static String agendaFileName = "agendaData.json";
     protected final static String speakersFileName = "speakersData.json";
+    protected final static String evalLinkFileName = "evalLink.txt";
+    protected String conferenceEvalLink = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +72,6 @@ public class MainActivity extends AppCompatActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -113,6 +114,8 @@ public class MainActivity extends AppCompatActivity
     private JSONArray parseAgenda(JSONObject response) throws JSONException {
         JSONArray sessionDays = response.getJSONArray("sessionDays");
         JSONArray eventsArray = new JSONArray();
+
+        this.conferenceEvalLink = response.getString("conferenceEvalLink");
 
         // sessiondays length should be 3 (0 = fri, 1 = sat, 2 = sun)
         for (int dayIndex = 0; dayIndex < sessionDays.length(); dayIndex++) {
@@ -191,6 +194,21 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    private void writeConfEvalLinkToFile(String link) {
+        // directly saves the response JSON into the android directory without parsing
+        try {
+            Writer output = null;
+            File file = new File(getFilesDir(), evalLinkFileName);
+            output = new BufferedWriter(new FileWriter(file));
+            output.write(link);
+            output.close();
+            Toast.makeText(getApplicationContext(), "Eval Link loaded", Toast.LENGTH_LONG).show();
+            Log.i(TAG, "Json imported to file: " + link);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void writeSpeakersToFile(JSONArray speakersArray) {
         // directly saves the response JSON into the android directory without parsing
         try {
@@ -238,6 +256,7 @@ public class MainActivity extends AppCompatActivity
                             JSONArray eventsArray = parseAgenda(response);
                             writeAgendaToFile(eventsArray);
                             readJsonFromFile(agendaFileName);
+                            writeConfEvalLinkToFile(conferenceEvalLink);
                         } catch (JSONException error) {
                             error.printStackTrace();
                         }
