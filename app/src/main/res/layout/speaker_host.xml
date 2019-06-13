@@ -6,7 +6,7 @@
     <TabHost
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/agenda_tabHost"
+        android:id="@+id/speaker_tabHost"
         android:layout_gravity="center_horizontal">
 
         <LinearLayout

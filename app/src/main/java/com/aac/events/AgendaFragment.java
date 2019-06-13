@@ -126,7 +126,7 @@ public class AgendaFragment extends Fragment {
                 }
 
                 sessiondetFrag.setArguments(args);
-                getFragmentManager().beginTransaction().replace(android.R.id.tabhost, sessiondetFrag).addToBackStack(null).commit();
+                getParentFragment().getFragmentManager().beginTransaction().replace(android.R.id.tabhost, sessiondetFrag).addToBackStack("adding in Agenda Fragment").commit();
             }
         });
 

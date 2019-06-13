@@ -129,7 +129,7 @@ public class SpeakersFragment extends Fragment {
                 persondetFrag.setArguments(args);
 
 
-                getFragmentManager().beginTransaction().replace(android.R.id.tabhost, persondetFrag).addToBackStack(null).commit();
+                getParentFragment().getFragmentManager().beginTransaction().replace(android.R.id.tabhost, persondetFrag).addToBackStack(null).commit();
             }
         });
 
