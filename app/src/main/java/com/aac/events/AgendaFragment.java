@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,6 +54,12 @@ public class AgendaFragment extends Fragment {
         //return inflater.inflate(R.layout.norms, container, false);
         View view = inflater.inflate(R.layout.agenda, container, false);
         view.setBackgroundResource(R.color.lists);
+
+
+        //Adding menu icons to tool bar
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setHomeButtonEnabled(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         Bundle args = this.getArguments();
         title = getArguments().getString("Sessions");
@@ -136,6 +144,7 @@ public class AgendaFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
 
         fridaySessions = new ArrayList<Event>();
         saturdaySessions = new ArrayList<Event>();

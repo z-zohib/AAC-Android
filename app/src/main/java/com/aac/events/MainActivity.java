@@ -1,6 +1,7 @@
 package com.aac.events;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.support.design.widget.NavigationView;
@@ -381,6 +382,13 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_credits:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CreditsFragment()).addToBackStack(null).commit();
                 break;
+            case R.id.nav_privacypolicy:
+                Intent intent_pp = new Intent();
+                intent_pp.setAction(Intent.ACTION_VIEW);
+                intent_pp.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent_pp.setData(Uri.parse("https://www.afghanamericanconference.org/mobile-app-privacy-policy"));
+                startActivity(intent_pp);
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

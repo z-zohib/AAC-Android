@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +33,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
+import android.widget.Toast;
 
 
 import static com.aac.events.MainActivity.speakersFileName;
@@ -47,6 +50,25 @@ public class SessionDetailsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.sessiondetails, container,false);
         view.setBackgroundResource(R.color.lists);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+
+        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar2);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(toolbar);
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        activity.getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getFragmentManager().getBackStackEntryCount() != 0) {
+                    getFragmentManager().popBackStack();
+                }
+                Toast.makeText(getActivity().getApplicationContext(),"your icon was clicked",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
 
         Bundle args = this.getArguments();
         TextView textViewTitle = (TextView) view.findViewById(R.id.title_session);
@@ -176,8 +198,19 @@ public class SessionDetailsFragment extends Fragment {
         return view;
     }
 
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+    }
+
     @Override
     public void onResume() {
+
+        //((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+
+
         super.onResume();
 
         JSONArray speakersArr;
