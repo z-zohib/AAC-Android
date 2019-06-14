@@ -48,6 +48,9 @@ public class SessionDetailsFragment extends Fragment {
         View view = inflater.inflate(R.layout.sessiondetails, container,false);
         view.setBackgroundResource(R.color.lists);
 
+
+
+
         Bundle args = this.getArguments();
         TextView textViewTitle = (TextView) view.findViewById(R.id.title_session);
         TextView textViewDescription = (TextView) view.findViewById(R.id.session_desc);
@@ -176,8 +179,11 @@ public class SessionDetailsFragment extends Fragment {
         return view;
     }
 
+
+
     @Override
     public void onResume() {
+
         super.onResume();
 
         JSONArray speakersArr;

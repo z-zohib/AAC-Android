@@ -11,8 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -20,7 +18,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import static com.aac.events.MainActivity.evalLinkFileName;
-import static com.aac.events.MainActivity.speakersFileName;
 
 public class ConferenceEvalFragment extends Fragment {
     private String conferenceEvalLink = "";

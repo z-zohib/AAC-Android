@@ -1,6 +1,7 @@
 package com.aac.events;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.support.design.widget.NavigationView;
@@ -11,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -38,8 +38,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Writer;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -87,11 +85,11 @@ public class MainActivity extends AppCompatActivity
             navigationView.setCheckedItem(R.id.nav_about);
         }
 
-        // OneSignal Initialization
-        //OneSignal.startInit(this)
-        // .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-        // .unsubscribeWhenNotificationsAreDisabled(true)
-        // .init();
+         //OneSignal Initialization
+        OneSignal.startInit(this)
+         .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+         .unsubscribeWhenNotificationsAreDisabled(true)
+         .init();
     }
 
     private void getDynamicJSONData() {
@@ -187,7 +185,6 @@ public class MainActivity extends AppCompatActivity
             output = new BufferedWriter(new FileWriter(file));
             output.write(eventsArray.toString());
             output.close();
-            Toast.makeText(getApplicationContext(), "Agenda loaded", Toast.LENGTH_LONG).show();
             Log.i(TAG, "Json imported to file: " + eventsArray.toString());
         } catch (IOException e) {
             e.printStackTrace();
@@ -202,7 +199,6 @@ public class MainActivity extends AppCompatActivity
             output = new BufferedWriter(new FileWriter(file));
             output.write(link);
             output.close();
-            Toast.makeText(getApplicationContext(), "Eval Link loaded", Toast.LENGTH_LONG).show();
             Log.i(TAG, "Json imported to file: " + link);
         } catch (IOException e) {
             e.printStackTrace();
@@ -217,7 +213,6 @@ public class MainActivity extends AppCompatActivity
             output = new BufferedWriter(new FileWriter(file));
             output.write(speakersArray.toString());
             output.close();
-            Toast.makeText(getApplicationContext(), "Speakers loaded", Toast.LENGTH_LONG).show();
             Log.i(TAG, "Json imported to file: " + speakersArray.toString());
         } catch (IOException e) {
             e.printStackTrace();
@@ -381,6 +376,13 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_credits:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CreditsFragment()).addToBackStack(null).commit();
                 break;
+            case R.id.nav_privacypolicy:
+                Intent intent_pp = new Intent();
+                intent_pp.setAction(Intent.ACTION_VIEW);
+                intent_pp.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent_pp.setData(Uri.parse("https://www.afghanamericanconference.org/mobile-app-privacy-policy"));
+                startActivity(intent_pp);
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

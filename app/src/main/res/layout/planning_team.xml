@@ -61,7 +61,8 @@
                 android:fontFamily="@font/nunito"
                 android:paddingBottom="10dp"
                 android:text="@string/text1_planning_team"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColorLink="#FF3F53D1"/>
 
         </LinearLayout>
     </ScrollView>

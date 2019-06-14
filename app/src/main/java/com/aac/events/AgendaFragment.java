@@ -22,12 +22,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.time.LocalTime;
-import java.time.ZoneOffset;
-import java.time.Instant;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 
 
 import static com.aac.events.MainActivity.agendaFileName;
@@ -52,6 +47,8 @@ public class AgendaFragment extends Fragment {
         //return inflater.inflate(R.layout.norms, container, false);
         View view = inflater.inflate(R.layout.agenda, container, false);
         view.setBackgroundResource(R.color.lists);
+
+
 
         Bundle args = this.getArguments();
         title = getArguments().getString("Sessions");
@@ -136,6 +133,7 @@ public class AgendaFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
 
         fridaySessions = new ArrayList<Event>();
         saturdaySessions = new ArrayList<Event>();

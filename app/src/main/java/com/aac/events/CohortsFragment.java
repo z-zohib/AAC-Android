@@ -1,22 +1,17 @@
 package com.aac.events;
 
-import android.content.ClipData;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.AdapterView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Date;
+
 
 public class CohortsFragment extends Fragment {
 
@@ -60,7 +55,7 @@ public class CohortsFragment extends Fragment {
 
             final String[] cohort_list = {
                     "Cohort 1",
-                    "TBD",
+                    "Yasmin Salemi",
                     "Easa Ahmadzai",
                     "Cohort 2",
                     "Nasira Rajabi",
@@ -90,8 +85,8 @@ public class CohortsFragment extends Fragment {
                     "Morcel Hamidy",
                     "Omeed Farani",
                     "Cohort 11",
-                    "Darya Moini",
-                    "TBD",
+                    "Sabrina Nassir",
+                    "Murtaza Aliyar",
                     "Cohort 12",
                     "Framerz Jaghori",
                     "Tamana Noory",
@@ -114,20 +109,20 @@ public class CohortsFragment extends Fragment {
                     "Rafiullah Hamedy",
                     "Zareena Sultani",
                     "Cohort 19",
-                    "Yoseph Raja",
-                    "Sabrina Nassir",
+                    "Darya Moini",
+                    "Mustafa Salemi",
                     "Cohort 20",
                     "Hussai Nuristani",
                     "Imron Saddozai",
                     "Cohort 21",
-                    "TBD",
+                    "Yoseph Raja",
                     "Rana Ahmadi",
                     "Cohort 22",
                     "Asseelah Azimi",
                     "Suliman Razai",
                     "Cohort 23",
                     "Farishta Nawaby",
-                    "Kazemi Kazemi",
+                    "Mokhtar Kazemi",
                     "Cohort 24",
                     "Wally Omar",
                     "Daywa Ahmadi",
@@ -170,7 +165,7 @@ public class CohortsFragment extends Fragment {
                         R.drawable.weiss_hamid,
                         R.drawable.no_image,
                         R.drawable.tarina_ayazi,
-                        R.drawable.no_image,
+                        R.drawable.sajad_ghanizada,
                         R.drawable.no_image,
                         R.drawable.mursal_noory,
                         R.drawable.yosef_mahmood,
@@ -178,7 +173,7 @@ public class CohortsFragment extends Fragment {
                         R.drawable.no_image,
                         R.drawable.omed_amin,
                         R.drawable.no_image,
-                        R.drawable.no_image,
+                        R.drawable.shabir_sarwary,
                         R.drawable.heelai_ahmadullah,
                         R.drawable.no_image,
                         R.drawable.no_image,
@@ -193,8 +188,8 @@ public class CohortsFragment extends Fragment {
                         R.drawable.morcel_hamidy,
                         R.drawable.omeed_farani,
                         R.drawable.no_image,
-                        R.drawable.darya_moini,
-                        R.drawable.no_image,
+                        R.drawable.sabrina_nassir,
+                        R.drawable.murtaza_aliyar,
                         R.drawable.no_image,
                         R.drawable.framerz_jaghori,
                         R.drawable.tamana_noory,
@@ -217,13 +212,13 @@ public class CohortsFragment extends Fragment {
                         R.drawable.rafiullah_hamedy,
                         R.drawable.zareena_sultani,
                         R.drawable.no_image,
-                        R.drawable.yoseph_raja,
-                        R.drawable.sabrina_nassir,
+                        R.drawable.darya_moini,
+                        R.drawable.no_image,
                         R.drawable.no_image,
                         R.drawable.hussai_nuristani,
                         R.drawable.imron_saddozai,
                         R.drawable.no_image,
-                        R.drawable.no_image,
+                        R.drawable.yoseph_raja,
                         R.drawable.rana_ahmadi,
                         R.drawable.no_image,
                         R.drawable.asseelah_azimi,
