@@ -1,22 +1,17 @@
 package com.aac.events;
 
-import android.content.ClipData;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.AdapterView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Date;
+
 
 public class CohortsFragment extends Fragment {
 
@@ -170,7 +165,7 @@ public class CohortsFragment extends Fragment {
                         R.drawable.weiss_hamid,
                         R.drawable.no_image,
                         R.drawable.tarina_ayazi,
-                        R.drawable.no_image,
+                        R.drawable.sajad_ghanizada,
                         R.drawable.no_image,
                         R.drawable.mursal_noory,
                         R.drawable.yosef_mahmood,

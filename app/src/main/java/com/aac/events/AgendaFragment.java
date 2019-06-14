@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,12 +22,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.time.LocalTime;
-import java.time.ZoneOffset;
-import java.time.Instant;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 
 
 import static com.aac.events.MainActivity.agendaFileName;
@@ -56,10 +49,6 @@ public class AgendaFragment extends Fragment {
         view.setBackgroundResource(R.color.lists);
 
 
-        //Adding menu icons to tool bar
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setHomeButtonEnabled(true);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         Bundle args = this.getArguments();
         title = getArguments().getString("Sessions");

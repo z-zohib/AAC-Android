@@ -6,39 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:fitsSystemWindows="true"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"/>
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar2"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#000000"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-
-
-            <ImageView
-                android:id="@+id/aaclogo"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:adjustViewBounds="true"
-                android:src="@drawable/aac_toolbar"
-                android:layout_gravity="center"
-                />
-
-
-        </android.support.v7.widget.Toolbar>
-
-    </android.support.design.widget.AppBarLayout>
 
     <ImageView
         android:id="@+id/imageView"
@@ -50,15 +17,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/session_dets"
-        tools:srcCompat="@drawable/session_dets"
-        android:layout_marginTop="?attr/actionBarSize"/>
+        tools:srcCompat="@drawable/session_dets"/>
 
     <TextView
         android:id="@+id/title_session"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:fontFamily="@font/droid_serif"
-        android:text="Session Title Goes Here"
+        android:text="Session Title"
         android:textColor="@android:color/white"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
@@ -87,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nunito"
-        android:text="Main Street Hall Main Street Hall Main Street HallMain Street HallMain Street Hall"
+        android:text="Session Location"
         android:textColor="#AAA3A3"
         android:textSize="16sp"
         app:layout_constraintHorizontal_weight="4"
