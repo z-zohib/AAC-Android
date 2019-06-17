@@ -179,7 +179,7 @@ public class CohortsFragment extends Fragment {
                         R.drawable.no_image,
                         R.drawable.salima_sekandari,
                         R.drawable.no_image,
-                        R.drawable.no_image,
+                        R.drawable.mujtaba_shahsamand,
                         R.drawable.no_image,
                         R.drawable.no_image,
                         R.drawable.kane_dabir,
